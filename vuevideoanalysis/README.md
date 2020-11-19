@@ -5,6 +5,8 @@
 npm install
 
 npm install axios
+
+npm i element-ui -S
 ```
 
 ### Compiles and hot-reloads for development

@@ -90,7 +90,7 @@ export default {
     //窗体加载，基础的加载
     my_window_load() {
       axios
-        .get("http://180.76.98.78/snippets/?format=json")
+        .get("http://180.76.98.78/GetVideoUrls/?format=json")
         .then((response) => {
           // handle success
           // console.log(response);

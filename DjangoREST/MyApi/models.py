@@ -23,3 +23,11 @@ STYLE_CHOICES = sorted((item, item) for item in get_all_styles())
 #         ordering = ('created',)
 
 # Create your models here.
+
+
+class itellyou(models.Model):
+    key = models.CharField(max_length=100, blank=True, default='')
+    name = models.CharField(max_length=100, blank=True, default='')
+
+
+

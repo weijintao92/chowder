@@ -313,7 +313,7 @@ def get_url_list():
     """
     获取最终的url集合
     """
-    with open('./VideoApi/myfunction/video_result33.txt', "r") as fs:
+    with open('./MyApi/myfunction/video_result33.txt', "r") as fs:
         os_url = fs.read()
         fs.close()
 

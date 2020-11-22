@@ -1,4 +1,10 @@
 #!/usr/bin/python3
+# -*- coding: UTF-8 -*-
+
+#Date:2020-10
+#Author:wjt
+#description: 根据百度关键字获取搜索结果的链接
+
 import requests
 from bs4 import BeautifulSoup
 import re

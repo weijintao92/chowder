@@ -100,30 +100,48 @@ export default {
         });
     },
     get_detail(key) {
-      const formdata = new formdata();
-      formdata.
+      var fd = new FormData();
+      fd.append("id", key); //后台给的类型（4个）
+      // var config = { headers: { "Content-Type": "multipart/form-data" } };
+
       // axios(config);
+      // console.log(key)
+      // const params = new URLSearchParams();
+      // params.append("id",key)
       // 发送 POST 请求
-      axios(
-        {
+      axios({
         method: "post",
+        // url: "https://msdn.itellyou.cn/Index/GetCategory",
         url: "https://msdn.itellyou.cn/Index/GetCategory",
-        data: {
-          id: key
+        fd,
+
+        headers: {
+          "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+          "xsrfCookieName":"UM_distinctid=175ea4b3dea63-0cec85404da311-6f5b7628-1fa400-175ea4b3deb9f1; _ga=GA1.2.1819646167.1605953601; never_show_donate_auto=true; CNZZDATA1605814=cnzz_eid%3D349703014-1605951993-https%253A%252F%252Fwww.baidu.com%252F%26ntime%3D1606138593; Hm_lvt_8688ca4bc18cbc647c9c68fdaef6bc24=1605953601,1606044268,1606138809; _gid=GA1.2.794892782.1606138809; .AspNetCore.Antiforgery.kC_Kc8he0KM=CfDJ8Jw19B-OaM1KveQHPjyyKOMilfzCVKOCa3wxqXt2cA3jg9TAPpA5Fyna-dNipm1VSXQ5LKCy7QPtcJ9DASbk0KXNALze7BkIq02mT97GbmSPwwJy6TByDHCwT-iTmhhVkZodDpyiP5QbM4PLn3pkM2k; _gat=1; Hm_lpvt_8688ca4bc18cbc647c9c68fdaef6bc24=1606140996",
+          "x-csrf-token":"CfDJ8Jw19B-OaM1KveQHPjyyKOOd18a3pjYkGzjpg6yx70hqNG9_vQa70qpa-qQz2D7Eh97RRGkKZgMTkIxKiSSShMstxQsKFw5SS9vir9Rhbqah0HWI45jeBcng-Wa0IPba6xDga6ROzOfyBJAUQ3n7C9E",
+          
+          "accept": "*/*",
+          "accept-encoding": "gzip, deflate, br",
+          "accept-language": "zh-CN,zh;q=0.9",
+          "content-length": "39",
+          "origin": "https://msdn.itellyou.cn",
+          "referer": "https://msdn.itellyou.cn/",
+          "sec-fetch-dest": "empty",
+          "sec-fetch-mode": "cors",
+          "sec-fetch-site": "same-origin",
+          "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4315.4 Safari/537.36",
+          "x-requested-with": "XMLHttpRequest",
+
         },
-        headers:{ 
-          'Content-Type': 'application/x-www-form-urlencoded',
-          cookie: 'UM_distinctid=175cf967505898-0b05982987527e-75143d4c-13c680-175cf9675066d9; _ga=GA1.2.319749700.1605505546; _gid=GA1.2.1136103836.1606100781; Hm_lvt_8688ca4bc18cbc647c9c68fdaef6bc24=1605692906,1605753012,1605856840,1606100781; CNZZDATA1605814=cnzz_eid%3D1910850215-1605505313-https%253A%252F%252Fwww.baidu.com%252F%26ntime%3D1606120662; _gat=1; .AspNetCore.Antiforgery.kC_Kc8he0KM=CfDJ8Jw19B-OaM1KveQHPjyyKOMX23IxH2Aa028338Aryl9Pw6dPFdQB0DniueT_xVjkR7MT5rSojIu5hG_YzZbTlvl03WuKfeEH8jDJU8aVLGKHgDCjsrnYUVSHkfX8p3gDzVPqaI6Ad5tDCkDh8WOlF5E; Hm_lpvt_8688ca4bc18cbc647c9c68fdaef6bc24=1606124045',
-          'x-csrf-token': 'CfDJ8Jw19B-OaM1KveQHPjyyKOOd18a3pjYkGzjpg6yx70hqNG9_vQa70qpa-qQz2D7Eh97RRGkKZgMTkIxKiSSShMstxQsKFw5SS9vir9Rhbqah0HWI45jeBcng-Wa0IPba6xDga6ROzOfyBJAUQ3n7C9E',
-        }
-      }).then((response) =>{
-        console.log(222222)
-        console.log(response)
-      })
+      }).then((response) => {
+        console.log(222222);
+        console.log(response);
+      });
     },
     handleOpen(key, keyPath) {
       console.log(key, keyPath);
-      this.get_detail()
+      console.log(key);
+      this.get_detail(key);
     },
     handleClose(key, keyPath) {
       console.log(key, keyPath);

@@ -12,11 +12,8 @@ my_key = "wjt123"
 
 @api_view(['GET'])
 def reptile_itellyou_base(request, pk):
-    """
-    '我告诉你'爬虫基础
-    Description: 啊手动阀手动阀
-    Description:
-    asdfasdf
+    """ 
+    我告诉你 网页基础分析
     """
     if pk != my_key:
         return HttpResponse(status=401)
@@ -26,6 +23,20 @@ def reptile_itellyou_base(request, pk):
         else:
             return Response(status=404)
 
+
+@api_view(['POST'])
+def reptile_itellyou_detail(request, pk):
+    """ 
+    我告诉你 目录明细获取
+    """
+    #
+    if pk != my_key:
+        return HttpResponse(status=401)
+    if request.method == 'POST':
+        if itellyou_function.reptile_itellyou_detail():
+            return Response(data='成功！',status=200)
+        else:
+            return Response(status=404)
         
 @api_view(['GET'])
 def GetVideoUrls(request):

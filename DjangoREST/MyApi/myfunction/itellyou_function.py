@@ -29,7 +29,7 @@ disable_warnings(InsecureRequestWarning)  # 禁止https(ssl)问题的警告
 from MyApi.myfunction import my_public_method
 
 
-from MyApi.models import itellyou
+from MyApi.models import itellyou,itellyou_detali
 
 
 def reptile_itellyou_base():
@@ -53,39 +53,16 @@ def reptile_itellyou_base():
         return False
     
 
-def post_url():
+def reptile_itellyou_detail():
     """
     请求网站公共方法
     """
-    
-    ua = UserAgent()  # 爬虫请求头伪装
-    payload = {'id': 'AFF8A80F-2DEE-4BBA-80EC-611AC56D3849'}
-    m = MultipartEncoder(payload)
-    # 定制请求头
-    my_headers = {
-        # ':authority': 'msdn.itellyou.cn',
-        # ':method': 'POST',
-        # ':path': '/Index/GetCategory',
-        # 'accept': '*/*',
-        # 'accept-encoding': 'gzip, deflate, br',
-        # 'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8',
-        'content-type': m.content_type,
+    list_itellyoubase = itellyou.objects.all()
+    if len(list_itellyoubase):
+        pass
 
-        # 'origin': 'https://msdn.itellyou.cn',
-        # 'sec-fetch-dest': 'empty',
-        # 'sec-fetch-mode': 'cors',
-        # 'x-requested-with':'XMLHttpRequest',
-        'cookie': 'UM_distinctid175cf967505898-0b05982987527e-75143d4c-13c680-175cf9675066d9; _ga=GA1.2.319749700.1605505546; CNZZDATA1605814=cnzz_eid%3D1910850215-1605505313-https%253A%252F%252Fwww.baidu.com%252F%26ntime%3D1606097560; _gid=GA1.2.1136103836.1606100781; Hm_lvt_8688ca4bc18cbc647c9c68fdaef6bc24=1605692906,1605753012,1605856840,1606100781; .AspNetCore.Antiforgery.kC_Kc8he0KM=CfDJ8Jw19B-OaM1KveQHPjyyKOMg4zr6PaE4MiX53UQCgjs7sQD--xFt4khM7ij31f6ao9P9lOclj2DbOyfdzXVm6Fuv7l3MVla_6k9YcyFE9_bzMwoWM1_arwOeonh6w_ztsnIfDMb2odn116k1XRy8oOs; _gat=1; Hm_lpvt_8688ca4bc18cbc647c9c68fdaef6bc24=1606102394',
-        'x-csrf-token': 'CfDJ8Jw19B-OaM1KveQHPjyyKOOd18a3pjYkGzjpg6yx70hqNG9_vQa70qpa-qQz2D7Eh97RRGkKZgMTkIxKiSSShMstxQsKFw5SS9vir9Rhbqah0HWI45jeBcng-Wa0IPba6xDga6ROzOfyBJAUQ3n7C9E',
-        
-
-        # 'User-Agent': ua.chrome,
-    }
-    
-    r = requests.post(url='https://msdn.itellyou.cn/Index/GetCategory',data=m  ,headers=my_headers)
-    # r.encoding = r.apparent_encoding
-    if r.status_code==200:
-        return r.text
+    for target_list in list_itellyoubase:
+        my_public_method.itellyou_post(target_list["key"])
         
 
 

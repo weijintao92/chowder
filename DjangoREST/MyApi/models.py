@@ -24,10 +24,20 @@ STYLE_CHOICES = sorted((item, item) for item in get_all_styles())
 
 # Create your models here.
 
-
+# 我告诉你基础
 class itellyou(models.Model):
     key = models.CharField(max_length=100, blank=True, default='')
     name = models.CharField(max_length=100, blank=True, default='')
+
+# 我告诉你基础
+class itellyou_detali(models.Model):
+    father_key= models.CharField(max_length=100, blank=True, default='')
+    key = models.CharField(max_length=100, blank=True, default='')
+    name = models.CharField(max_length=100, blank=True, default='')
+    class Meta:
+        ordering = ('father_key',)
+
+
 
 
 

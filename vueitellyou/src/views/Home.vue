@@ -2,11 +2,7 @@
   <el-container>
     <el-header>
       <div>
-        <el-image
-          style="height: 44px; width: 136px"
-          :src="url"
-          :fit="fit"
-        ></el-image>
+        <el-image style="height: 44px; width: 136px" :src="url"></el-image>
       </div>
       <div class="my_div">
         <div
@@ -29,11 +25,9 @@
       </div>
     </el-header>
     <el-container style="width: 80%">
-      <el-aside width="200px"
-        ><el-row class="tac">
-
-          <el-col :span="12">
-            <h5>自定义颜色</h5>
+      <el-aside width="40%">
+        <el-row class="tac">
+          <el-col :span="24">
             <el-menu
               default-active="2"
               class="el-menu-vertical-demo"
@@ -42,41 +36,23 @@
               background-color="#545c64"
               text-color="#fff"
               active-text-color="#ffd04b"
+              :unique-opened="true"
             >
-              <el-submenu index="1">
+              <el-submenu
+                v-for="(item, index) in aside_main"
+                :key="index"
+                :index="item.key"
+              >
                 <template slot="title">
-                  <i class="el-icon-location"></i>
-                  <span>导航一</span>
+                  <i class="el-icon-menu"></i>
+                  <span>{{ item.name }}</span>
                 </template>
-                <el-menu-item-group>
-                  <template slot="title">分组一</template>
-                  <el-menu-item index="1-1">选项1</el-menu-item>
-                  <el-menu-item index="1-2">选项2</el-menu-item>
-                </el-menu-item-group>
-                <el-menu-item-group title="分组2">
-                  <el-menu-item index="1-3">选项3</el-menu-item>
-                </el-menu-item-group>
-                <el-submenu index="1-4">
-                  <template slot="title">选项4</template>
-                  <el-menu-item index="1-4-1">选项1</el-menu-item>
-                </el-submenu>
+                <el-menu-item index="1-1">选项1</el-menu-item>
               </el-submenu>
-              <el-menu-item index="2">
-                <i class="el-icon-menu"></i>
-                <span slot="title">导航二</span>
-              </el-menu-item>
-              <el-menu-item index="3" disabled>
-                <i class="el-icon-document"></i>
-                <span slot="title">导航三</span>
-              </el-menu-item>
-              <el-menu-item index="4">
-                <i class="el-icon-setting"></i>
-                <span slot="title">导航四</span>
-              </el-menu-item>
             </el-menu>
           </el-col>
-        </el-row></el-aside
-      >
+        </el-row>
+      </el-aside>
       <el-container>
         <el-main>Main</el-main>
       </el-container>
@@ -85,29 +61,77 @@
 </template>
 
 <script>
-// @ is an alias to /src
+import axios from "axios";
+// import Axios from "axios";
 
 export default {
   name: "Home",
   data() {
     return {
-      fits: ["fill", "contain", "cover", "none", "scale-down"],
       url: "https://msdn.itellyou.cn/images/itellyou.cn.png",
       head_buttons: [
         { name: "站长备用", url: "", my_icon: "" },
         { name: "十年相伴", url: "", my_icon: "" },
         { name: "最新更新", url: "", my_icon: "" },
       ],
+      aside_main: [],
     };
   },
-      methods: {
-      handleOpen(key, keyPath) {
-        console.log(key, keyPath);
-      },
-      handleClose(key, keyPath) {
-        console.log(key, keyPath);
-      }
-    }
+  created: function () {
+    //窗体加载时执行
+    this.my_window_load();
+  },
+  methods: {
+    my_window_load() {
+      axios
+        .get("http://180.76.98.78/get_itellyou_base/")
+        .then((response) => {
+          // handle success
+          // console.log(response);
+          this.aside_main = response.data;
+          // console.log(this.my_option)
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        })
+        .then(function () {
+          // always executed
+        });
+    },
+    get_detail(key) {
+      const formdata = new formdata();
+      formdata.
+      // axios(config);
+      // 发送 POST 请求
+      axios(
+        {
+        method: "post",
+        url: "https://msdn.itellyou.cn/Index/GetCategory",
+        data: {
+          id: key
+        },
+        headers:{ 
+          'Content-Type': 'application/x-www-form-urlencoded',
+          cookie: 'UM_distinctid=175cf967505898-0b05982987527e-75143d4c-13c680-175cf9675066d9; _ga=GA1.2.319749700.1605505546; _gid=GA1.2.1136103836.1606100781; Hm_lvt_8688ca4bc18cbc647c9c68fdaef6bc24=1605692906,1605753012,1605856840,1606100781; CNZZDATA1605814=cnzz_eid%3D1910850215-1605505313-https%253A%252F%252Fwww.baidu.com%252F%26ntime%3D1606120662; _gat=1; .AspNetCore.Antiforgery.kC_Kc8he0KM=CfDJ8Jw19B-OaM1KveQHPjyyKOMX23IxH2Aa028338Aryl9Pw6dPFdQB0DniueT_xVjkR7MT5rSojIu5hG_YzZbTlvl03WuKfeEH8jDJU8aVLGKHgDCjsrnYUVSHkfX8p3gDzVPqaI6Ad5tDCkDh8WOlF5E; Hm_lpvt_8688ca4bc18cbc647c9c68fdaef6bc24=1606124045',
+          'x-csrf-token': 'CfDJ8Jw19B-OaM1KveQHPjyyKOOd18a3pjYkGzjpg6yx70hqNG9_vQa70qpa-qQz2D7Eh97RRGkKZgMTkIxKiSSShMstxQsKFw5SS9vir9Rhbqah0HWI45jeBcng-Wa0IPba6xDga6ROzOfyBJAUQ3n7C9E',
+        }
+      }).then((response) =>{
+        console.log(222222)
+        console.log(response)
+      })
+    },
+    handleOpen(key, keyPath) {
+      console.log(key, keyPath);
+      this.get_detail()
+    },
+    handleClose(key, keyPath) {
+      console.log(key, keyPath);
+    },
+    // getabc(key, keyPath) {
+    //   console.log(key, keyPath);
+    // },
+  },
 };
 </script>
 
@@ -137,8 +161,8 @@ export default {
 .el-aside {
   background-color: #d3dce6;
   color: #333;
-  text-align: center;
-  line-height: 200px;
+  /* text-align: center; */
+  /* line-height: 200px; */
 }
 
 .el-container.is-vertical {

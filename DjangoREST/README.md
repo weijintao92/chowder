@@ -26,6 +26,19 @@ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple uwsgi
 
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple uvicorn
 
+python -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple  uvicorn gunicorn
+
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple uvloop
+
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple httptools
+
+pip install fake_useragent
+
+pip install requests_toolbelt
+
+pip install coreapi
+
+
 #验证django
 import django
 print(django.get_version())
@@ -63,9 +76,9 @@ python manage.py startapp gd97 #视频解析
 - https://www.uvicorn.org/
 
 ```
- python -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple  uvicorn gunicorn
+python -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple  uvicorn gunicorn
 
- gunicorn DjangoREST.asgi:application -k uvicorn.workers.UvicornWorker
+gunicorn DjangoREST.asgi:application -k uvicorn.workers.UvicornWorker
 
 ```
 
@@ -77,3 +90,28 @@ nginx -s reopen # 重启 Nginx
 nginx -s stop # 停止 Nginx
 
 ```
+
+
+# 安装sqlite3
+```
+wget https://www.sqlite.org/2019/sqlite-autoconf-3270200.tar.gz
+tar -zxvf sqlite-autoconf-3270200.tar.gz
+cd sqlite-autoconf-3270200
+./configure
+make && make install
+mv /usr/bin/sqlite3  /usr/bin/sqlite3_old
+ln -s /usr/local/bin/sqlite3   /usr/bin/sqlite3
+export LD_LIBRARY_PATH="/usr/local/lib"#添加到~/.bashrc中
+```
+
+- 注意：在安装使用默认安装的方式，千万不要制定安装目录。不然python无法找到。
+- 参考:https://blog.csdn.net/ginynu/article/details/97172159
+
+
+
+import sqlite3
+
+sqlite3.sqlite_version
+
+
+.quit   #退出sqlite3

@@ -38,13 +38,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'MyApi.apps.MyapiConfig'
+    'MyApi.apps.MyapiConfig',
+    # 'rest_framework_swagger',
 ]
 
 REST_FRAMEWORK = {
 
     # 指定用于支持coreapi的Schema
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
+    # 'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.AutoSchema'
 
 }
 

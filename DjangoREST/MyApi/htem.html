@@ -1,0 +1,205 @@
+'\n\n<html lang="zh-ch">\n
+
+<head>\n <title> Quickstart - Django REST framework 中文站点</title>\n
+    <meta name="keywords" content="Nancy django-rest-framework rest_framework blog" />\n
+    <meta name="description" content="Django, API, DRF, 中文文档, rest_framework, django-rest-framework, REST, 主页">\n
+    <meta name="author" content="Nancy">\n
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />\n
+    <link href="/static/css/base.css" rel="stylesheet">\n
+    <link href="/static/css/index.css" rel="stylesheet">\n
+    <link href="/static/css/github.css" rel="stylesheet">\n
+    <link href="/static/css/markdown.css" rel="stylesheet">\n
+    <link href="/static/css/drf.css" rel="stylesheet">\n
+    <link href="/static/images/drf.ico" rel="shortcut icon">\n <script type="text/javascript"
+        src="/static/js/jquery.min.js"></script>\n <script type="text/javascript" src="/static/js/myFunc.js"></script>\n
+    <script type="text/javascript" src="/static/js/theia-sticky-sidebar.js"></script>\n <script type="text/javascript"
+        src="/static/js/love.js"></script>\n <script type="text/javascript">
+        \
+        n jQuery(document).ready(function () {
+                    \
+                    n jQuery(\
+                            '.title-toc\').theiaStickySidebar({\n                // Settings\n                additionalMarginTop: 10\n            });\n        });\n    
+    </script>\n <script type="text/javascript">
+        \
+        n
+        var _hmt = _hmt || [];\
+        n(function () {
+            \
+            n
+            var hm = document.createElement("script");\
+            n hm.src = "https://hm.baidu.com/hm.js?9b81055695469f241f95afa648b1f18d";\
+            n
+            var s = document.getElementsByTagName("script")[0];\
+            n s.parentNode.insertBefore(hm, s);\
+            n
+        })();\
+        n
+    </script>\n <script type="text/javascript">
+        \
+        n // 监听浏览器前进后退等操作\n        window.addEventListener("popstate", function () {\n            location.reload()\n        });\n    
+    </script>\n</head>\n\n
+
+<body>\n<div class="wrapper">\n <div class="navbar navbar-inverse navbar-fixed-top">\n <div class="navbar-inner">\n <div
+                    class="container-fluid">\n <div class="brand"><a
+                            href="https://www.django-rest-framework.org/">Django REST framework</a></div>\n\n <div
+                        class="nav-collapse collapse">\n <ul class="nav navbar-nav">\n <li><a
+                                    href="/djangorestframework/Home/" class="highlight">首 页</a></li>\n <li
+                                class="dropdown">\n <a href="javascript:;">教 程</a>\n <ul class="dropdown-menu">\n <li><a
+                                            href="javascript:;" data="Quickstart">快速开始</a></li>\n <li><a
+                                            href="javascript:;" data="1_Serialization">1 - 序列化</a></li>\n <li><a
+                                            href="javascript:;" data="2_Requests-and-responses">2 - 请求和响应</a></li>\n
+                                    <li><a href="javascript:;" data="3_Class-based-views">3 - 基于类的视图</a></li>\n <li><a
+                                            href="javascript:;" data="4_Authentication-and-permissions">4 - 认证和权限</a>
+                                    </li>\n <li><a href="javascript:;" data="5_Relationships-and-hyperlinked-APIs">5 -
+                                            关系和超链接\n API</a></li>\n <li><a href="javascript:;"
+                                            data="6_Viewsets-and-routers">6 - 视图集和路由器</a></li>\n <li><a
+                                            href="javascript:;" data="7_Schemas-and-client-libraries">7 - Schemas\n
+                                            和客户端库</a></li>\n </ul>\n </li>\n\n <li class="dropdown">\n <a
+                                    href="javascript:;">API 指南</a>\n <ul class="dropdown-menu">\n <li><a
+                                            href="javascript:;" data="Requests">请求</a></li>\n <li><a href="javascript:;"
+                                            data="Responses">响应</a></li>\n <li><a href="javascript:;"
+                                            data="Views">视图</a></li>\n <li><a href="javascript:;"
+                                            data="Generic-views">通用视图</a></li>\n <li><a href="javascript:;"
+                                            data="Viewsets">视图集</a></li>\n <li><a href="javascript:;"
+                                            data="Routers">路由器</a></li>\n <li><a href="javascript:;"
+                                            data="Parsers">解析器</a></li>\n <li><a href="javascript:;"
+                                            data="Renderers">渲染器</a></li>\n <li><a href="javascript:;"
+                                            data="Serializers">序列化器</a></li>\n <li><a href="javascript:;"
+                                            data="Serializer-fields">序列化器字段</a></li>\n <li><a href="javascript:;"
+                                            data="Serializer-relations">序列化器关系</a></li>\n <li><a href="javascript:;"
+                                            data="Validators">验证器</a></li>\n <li><a href="javascript:;"
+                                            data="Authentication">认证</a></li>\n <li><a href="javascript:;"
+                                            data="Permissions">权限</a></li>\n <li><a href="javascript:;"
+                                            data="Caching">缓存</a></li>\n <li><a href="javascript:;"
+                                            data="Throttling">限流</a></li>\n <li><a href="javascript:;"
+                                            data="Filtering">过滤</a></li>\n <li><a href="javascript:;"
+                                            data="Pagination">分页</a></li>\n <li><a href="javascript:;"
+                                            data="Versioning">版本控制</a></li>\n <li><a href="javascript:;"
+                                            data="Content-negotiation">内容协商</a></li>\n <li><a href="javascript:;"
+                                            data="Metadata">元数据</a></li>\n <li><a href="javascript:;"
+                                            data="Schemas">模式</a></li>\n <li><a href="javascript:;"
+                                            data="Format-suffixes">格式后缀</a></li>\n <li><a href="javascript:;"
+                                            data="Returning-URLs">返回 URL</a></li>\n <li><a href="javascript:;"
+                                            data="Exceptions">异常</a></li>\n <li><a href="javascript:;"
+                                            data="Status-codes">状态码</a></li>\n <li><a href="javascript:;"
+                                            data="Testing">测试</a></li>\n <li><a href="javascript:;"
+                                            data="Settings">设置</a></li>\n </ul>\n </li>\n\n <li class="dropdown">\n <a
+                                    href="javascript:;">主 题</a>\n <ul class="dropdown-menu">\n <li><a
+                                            href="javascript:;" data="Documenting-your-API">记录您的 API</a></li>\n <li><a
+                                            href="javascript:;" data="API-Clients">API 客户端</a></li>\n <li><a
+                                            href="javascript:;" data="Internationalization">国际化</a></li>\n <li><a
+                                            href="javascript:;" data="AJAX-CSRF-CORS">AJAX, CSRF & CORS</a></li>\n <li>
+                                        <a href="javascript:;" data="HTML-and-Forms">HTML 和表单</a></li>\n <li><a
+                                            href="javascript:;" data="Browser Enhancements">浏览器增强</a></li>\n <li><a
+                                            href="javascript:;" data="The-Browsable-API">可浏览的 API</a></li>\n <li><a
+                                            href="javascript:;" data="REST-Hypermedia-HATEOAS">REST, Hypermedia &\n
+                                            HATEOAS</a></li>\n </ul>\n </li>\n\n <li class="dropdown">\n <a
+                                    href="javascript:;">社 区</a>\n <ul class="dropdown-menu">\n <li><a
+                                            href="javascript:;" data="Tutorials-and-Resources">教程和资源</a></li>\n <li><a
+                                            href="javascript:;" data="Third-Party-Packages">第三方包</a></li>\n <li><a
+                                            href="javascript:;" data="Contributing-to-REST-framework">对 REST framework\n
+                                            的贡献</a></li>\n <li><a href="javascript:;" data="Project-management">项目管理</a>
+                                    </li>\n <li><a href="javascript:;" data="Release-Notes">发行说明</a></li>\n <li><a
+                                            href="javascript:;" data="3.9-Announcement">3.9 公告</a></li>\n <li><a
+                                            href="javascript:;" data="3.8-Announcement">3.8 公告</a></li>\n <li><a
+                                            href="javascript:;" data="3.7-Announcement">3.7 公告</a></li>\n <li><a
+                                            href="javascript:;" data="3.6-Announcement">3.6 公告</a></li>\n <li><a
+                                            href="javascript:;" data="3.5-Announcement">3.5 公告</a></li>\n <li><a
+                                            href="javascript:;" data="3.4-Announcement">3.4 公告</a></li>\n <li><a
+                                            href="javascript:;" data="3.3-Announcement">3.3 公告</a></li>\n <li><a
+                                            href="javascript:;" data="3.2-Announcement">3.2 公告</a></li>\n <li><a
+                                            href="javascript:;" data="3.1-Announcement">3.1 公告</a></li>\n <li><a
+                                            href="javascript:;" data="3.0-Announcement">3.0 公告</a></li>\n <li><a
+                                            href="javascript:;" data="Kickstarter-Announcement">Kickstarter 公告</a></li>
+                                    \n <li><a href="javascript:;" data="Mozilla-Grant">Mozilla 援助</a></li>\n <li><a
+                                            href="javascript:;" data="Funding">资金</a></li>\n <li><a href="javascript:;"
+                                            data="Jobs">工作</a></li>\n </ul>\n </li>\n <li><a
+                                    href="https://github.com/fangweiren/Django-REST-framework-documentation">Github</a>
+                            </li>\n <li><a href="http://www.iamnancy.top">Blog</a></li>\n </ul>\n </div>\n
+                    <!--<div style="clear: both"></div>-->\n </div>\n\n <div class="content">\n <div class="jztop">
+                    </div>\n\n <div class="container">\n <div class="title-toc">\n <p>
+                                <div class="toc">\n<ul>\n<li><a href="#_1">快速开始</a>
+                                            <ul>\n<li><a href="#_2">环境</a></li>\n<li><a href="#_3">项目设置</a></li>\n<li><a
+                                                        href="#_4">序列化</a></li>\n<li><a href="#_5">视图</a></li>\n<li><a
+                                                        href="#urls">URLs</a></li>\n<li><a href="#_6">设置</a></li>\n<li>
+                                                    <a href="#api">测试我们的 API</a></li>\n</ul>\n
+                                        </li>\n</ul>\n</div>\n
+                            </p>\n
+                            <hr>\n <div class="funding">\n <p
+                                    style="text-align: center; color: #A30000; font-weight: bold;">扫一扫 支持一下</p>\n <p
+                                    style="text-align: center; color: blue;">支付宝</p>\n <p><img
+                                        style="margin-left: 30px;" src="/static/images/drf/zhifubao.png" alt="" \n
+                                        height="160" width="160"></p>\n <p style="text-align: center; color: green;">
+                                    微&emsp;信</p>\n <p><img style="margin-left: 30px;"
+                                        src="/static/images/drf/weixin.png" alt="" \n height="160" width="160"></p>\n
+                            </div>\n </div>\n\n <div class="post-content">\n <div id="main-content"
+                                class="dttext1 f_l1">\n <div class="markdown-body">
+                                    <p>
+                                        <h1 id="_1">快速开始</h1>\n<p>我们将创建一个简单的 API 来允许管理员用户查看和编辑系统中的用户和组。</p>\n<h2
+                                            id="_2">环境</h2>\n<ul>\n<li>Python 3.5.2 </li>\n<li>Django 2.0.6 </li>\n<li>
+                                                djangorestframework 3.8.2 </li>\n<li>httpie 0.9.9</li>\n</ul>\n<h2
+                                            id="_3">项目设置</h2>\n<p>创建一个名为 <code>tutorial</code> 的新 Django 项目，然后创建一个名为
+                                            <code>quickstart</code> 的新应用。</p>\n<div class="codehilite">
+                                            <pre><span></span><span class="c1"># 创建项目目录</span>\n<span class="n">mkdir</span> <span class="n">tutorial</span>\n<span class="n">cd</span> <span class="n">tutorial</span>\n\n<span class="c1"># 创建 virtualenv 环境来隔离我们本地的包依赖关系</span>\n<span class="n">virtualenv</span> <span class="n">env</span>\n<span class="n">source</span> <span class="n">env</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>  <span class="c1"># 在 Windows 上使用 `env\\Scripts\\activate`</span>\n\n<span class="c1"># 在创建的虚拟环境中安装 Django 和 Django REST framework</span>\n<span class="n">pip</span> <span class="n">install</span> <span class="n">django</span>\n<span class="n">pip</span> <span class="n">install</span> <span class="n">djangorestframework</span>\n\n<span class="c1"># 创建一个新项目，并只有一个应用</span>\n<span class="n">django</span><span class="o">-</span><span class="n">admin</span><span class="o">.</span><span class="n">py</span> <span class="n">startproject</span> <span class="n">tutorial</span> <span class="o">.</span>  <span class="c1"># Note the trailing &#39;.&#39; character</span>\n<span class="n">cd</span> <span class="n">tutorial</span>\n<span class="n">django</span><span class="o">-</span><span class="n">admin</span><span class="o">.</span><span class="n">py</span> <span class="n">startapp</span> <span class="n">quickstart</span>\n<span class="n">cd</span> <span class="o">..</span>\n</pre>
+                                        </div>\n\n\n<p>项目布局应该如下所示：</p>\n<div class="codehilite">
+                                            <pre><span></span><span class="p">(</span><span class="n">venv</span><span class="p">)</span> <span class="n">fang</span><span class="nd">@ubuntu</span><span class="p">:</span><span class="o">~/</span><span class="n">tutorial</span><span class="err">$</span> <span class="n">pwd</span>\n<span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">fang</span><span class="o">/</span><span class="n">tutorial</span>\n<span class="p">(</span><span class="n">venv</span><span class="p">)</span> <span class="n">fang</span><span class="nd">@ubuntu</span><span class="p">:</span><span class="o">~/</span><span class="n">tutorial</span><span class="err">$</span> <span class="n">find</span> <span class="o">.</span>\n<span class="o">...</span>\n<span class="o">./</span><span class="n">manage</span><span class="o">.</span><span class="n">py</span>\n<span class="o">./</span><span class="n">tutorial</span>\n<span class="o">./</span><span class="n">tutorial</span><span class="o">/</span><span class="n">urls</span><span class="o">.</span><span class="n">py</span>\n<span class="o">./</span><span class="n">tutorial</span><span class="o">/</span><span class="n">wsgi</span><span class="o">.</span><span class="n">py</span>\n<span class="o">./</span><span class="n">tutorial</span><span class="o">/</span><span class="n">settings</span><span class="o">.</span><span class="n">py</span>\n<span class="o">./</span><span class="n">tutorial</span><span class="o">/</span><span class="n">quickstart</span>\n<span class="o">./</span><span class="n">tutorial</span><span class="o">/</span><span class="n">quickstart</span><span class="o">/</span><span class="n">apps</span><span class="o">.</span><span class="n">py</span>\n<span class="o">./</span><span class="n">tutorial</span><span class="o">/</span><span class="n">quickstart</span><span class="o">/</span><span class="n">tests</span><span class="o">.</span><span class="n">py</span>\n<span class="o">./</span><span class="n">tutorial</span><span class="o">/</span><span class="n">quickstart</span><span class="o">/</span><span class="n">migrations</span>\n<span class="o">./</span><span class="n">tutorial</span><span class="o">/</span><span class="n">quickstart</span><span class="o">/</span><span class="n">migrations</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>\n<span class="o">./</span><span class="n">tutorial</span><span class="o">/</span><span class="n">quickstart</span><span class="o">/</span><span class="n">models</span><span class="o">.</span><span class="n">py</span>\n<span class="o">./</span><span class="n">tutorial</span><span class="o">/</span><span class="n">quickstart</span><span class="o">/</span><span class="n">admin</span><span class="o">.</span><span class="n">py</span>\n<span class="o">./</span><span class="n">tutorial</span><span class="o">/</span><span class="n">quickstart</span><span class="o">/</span><span class="n">views</span><span class="o">.</span><span class="n">py</span>\n<span class="o">./</span><span class="n">tutorial</span><span class="o">/</span><span class="n">quickstart</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>\n<span class="o">./</span><span class="n">tutorial</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span>\n</pre>
+                                        </div>\n\n\n<p>在项目目录中创建应用程序可能看起来很不寻常。使用项目的名称空间避免了与外部模块的名称冲突(话题超出了快速入门的范围)。</p>\n
+                                        <p>现在第一次同步您的数据库：</p>\n<div class="codehilite">
+                                            <pre><span></span><span class="p">(</span><span class="n">venv</span><span class="p">)</span> <span class="n">fang</span><span class="nd">@ubuntu</span><span class="p">:</span><span class="o">~/</span><span class="n">tutorial</span><span class="err">$</span> <span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">migrate</span>\n</pre>
+                                        </div>\n\n\n<p>我们还将创建一个名为 <code>admin</code> 的初始用户，其密码为
+                                            <code>password123</code>。稍后在示例中，我们将验证该用户。</p>\n<div class="codehilite">
+                                            <pre><span></span><span class="p">(</span><span class="n">venv</span><span class="p">)</span> <span class="n">fang</span><span class="nd">@ubuntu</span><span class="p">:</span><span class="o">~/</span><span class="n">tutorial</span><span class="err">$</span> <span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">createsuperuser</span> <span class="o">--</span><span class="n">email</span> <span class="n">admin</span><span class="nd">@example.com</span> <span class="o">--</span><span class="n">username</span> <span class="n">admin</span>\n</pre>
+                                        </div>\n\n\n<p>一旦你建立了一个数据库并创建了初始用户并且准备就绪，打开应用程序的目录，我们开始编码......</p>\n<h2
+                                            id="_4">序列化</h2>\n<p>首先我们要定义一些序列化器。我们来创建一个名为
+                                            <code>tutorial/quickstart/serializers.py</code> 的新模块，我们将用它来表示数据。</p>\n<div
+                                            class="codehilite">
+                                            <pre><span></span><span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span><span class="p">,</span> <span class="n">Group</span>\n<span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">serializers</span>\n\n\n<span class="k">class</span> <span class="nc">UserSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">HyperlinkedModelSerializer</span><span class="p">):</span>\n    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>\n        <span class="n">model</span> <span class="o">=</span> <span class="n">User</span>\n        <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">,</span> <span class="s1">&#39;username&#39;</span><span class="p">,</span> <span class="s1">&#39;email&#39;</span><span class="p">,</span> <span class="s1">&#39;groups&#39;</span><span class="p">)</span>\n\n\n<span class="k">class</span> <span class="nc">GroupSerializer</span><span class="p">(</span><span class="n">serializers</span><span class="o">.</span><span class="n">HyperlinkedModelSerializer</span><span class="p">):</span>\n    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>\n        <span class="n">model</span> <span class="o">=</span> <span class="n">Group</span>\n        <span class="n">fields</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">)</span>\n</pre>
+                                        </div>\n\n\n<p>请注意，在本例中我们用到了超链接关系，使用
+                                            <code>HyperlinkedModelSerializer</code>。您还可以使用主键和各种其他关系，但超链接是很棒的 RESTful 设计。
+                                        </p>\n<h2 id="_5">视图</h2>\n<p>好了，我们最好写一些视图。打开
+                                            <code>tutorial/quickstart/views.py</code> 并输入。</p>\n<div class="codehilite">
+                                            <pre><span></span><span class="kn">from</span> <span class="nn">django.contrib.auth.models</span> <span class="kn">import</span> <span class="n">User</span><span class="p">,</span> <span class="n">Group</span>\n<span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">viewsets</span>\n<span class="kn">from</span> <span class="nn">tutorial.quickstart.serializers</span> <span class="kn">import</span> <span class="n">UserSerializer</span><span class="p">,</span> <span class="n">GroupSerializer</span>\n\n\n<span class="k">class</span> <span class="nc">UserViewSet</span><span class="p">(</span><span class="n">viewsets</span><span class="o">.</span><span class="n">ModelViewSet</span><span class="p">):</span>\n    <span class="sd">&quot;&quot;&quot;</span>\n<span class="sd">    允许用户查看或编辑的 API 端点。</span>\n<span class="sd">    &quot;&quot;&quot;</span>\n    <span class="n">queryset</span> <span class="o">=</span> <span class="n">User</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span><span class="o">.</span><span class="n">order_by</span><span class="p">(</span><span class="s1">&#39;-date_joined&#39;</span><span class="p">)</span>\n    <span class="n">serializer_class</span> <span class="o">=</span> <span class="n">UserSerializer</span>\n\n\n<span class="k">class</span> <span class="nc">GroupViewSet</span><span class="p">(</span><span class="n">viewsets</span><span class="o">.</span><span class="n">ModelViewSet</span><span class="p">):</span>\n    <span class="sd">&quot;&quot;&quot;</span>\n<span class="sd">    允许组查看或编辑的 API 端点。</span>\n<span class="sd">    &quot;&quot;&quot;</span>\n    <span class="n">queryset</span> <span class="o">=</span> <span class="n">Group</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>\n    <span class="n">serializer_class</span> <span class="o">=</span> <span class="n">GroupSerializer</span>\n</pre>
+                                        </div>\n\n\n<p>我们将所有通用行为分组到 <code>ViewSets</code> 类中，而不是编写多个视图。</p>\n<p>
+                                            如果需要，我们可以轻松地将这些视图分解为单个视图，但使用视图集可以使视图逻辑组织得非常好，并且非常简洁。</p>\n<h2 id="urls">URLs
+                                        </h2>\n<p>好的，现在让我们配置 API 的 URL。在 <code>tutorial / urls.py</code> 上...</p>\n<div
+                                            class="codehilite">
+                                            <pre><span></span><span class="kn">from</span> <span class="nn">django.conf.urls</span> <span class="kn">import</span> <span class="n">url</span><span class="p">,</span> <span class="n">include</span>\n<span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">routers</span>\n\n<span class="kn">from</span> <span class="nn">tutorial.quickstart</span> <span class="kn">import</span> <span class="n">views</span>\n\n<span class="n">router</span> <span class="o">=</span> <span class="n">routers</span><span class="o">.</span><span class="n">DefaultRouter</span><span class="p">()</span>\n<span class="n">router</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;users&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">UserViewSet</span><span class="p">)</span>\n<span class="n">router</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;group&#39;</span><span class="p">,</span> <span class="n">views</span><span class="o">.</span><span class="n">GroupViewSet</span><span class="p">)</span>\n\n<span class="c1"># 使用自动 URL 路由连接 API。</span>\n<span class="c1"># 另外，我们还包括可浏览 API 的登录 URL。</span>\n<span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>\n    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="n">router</span><span class="o">.</span><span class="n">urls</span><span class="p">)),</span>\n    <span class="n">url</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^api-auth/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s1">&#39;rest_framework.urls&#39;</span><span class="p">,</span> <span class="n">namespace</span><span class="o">=</span><span class="s1">&#39;rest_framework&#39;</span><span class="p">))</span>\n<span class="p">]</span>\n</pre>
+                                        </div>\n\n\n<p>因为我们使用视图集而不是视图，所以我们可以通过简单地向路由器类注册视图集来自动为我们的 API 生成 URL conf。</p>
+                                        \n<p>同样，如果我们需要更多地控制 API URL，我们可以简单地使用常规的基于类的视图，并明确地编写 URL conf。</p>\n<p>
+                                            最后，我们将包括默认的登录和注销视图，以用于可浏览的 API。这是可选的，但如果您的 API 需要身份验证并且您想使用可浏览的 API，则会很有用。
+                                        </p>\n<h2 id="_6">设置</h2>\n<p>将 <code>rest_framework</code> 添加到
+                                            <code>INSTALLED_APPS</code>。设置模块将位于 <code>tutorial/settings.py</code> 中</p>
+                                        \n<div class="codehilite">
+                                            <pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>\n    <span class="s1">&#39;django.contrib.admin&#39;</span><span class="p">,</span>\n    <span class="s1">&#39;django.contrib.auth&#39;</span><span class="p">,</span>\n    <span class="s1">&#39;django.contrib.contenttypes&#39;</span><span class="p">,</span>\n    <span class="s1">&#39;django.contrib.sessions&#39;</span><span class="p">,</span>\n    <span class="s1">&#39;django.contrib.messages&#39;</span><span class="p">,</span>\n    <span class="s1">&#39;django.contrib.staticfiles&#39;</span><span class="p">,</span>\n    <span class="s1">&#39;rest_framework&#39;</span><span class="p">,</span>\n<span class="p">]</span>\n</pre>
+                                        </div>\n\n\n<p>好的，我们完成了。</p>\n<h2 id="api">测试我们的 API</h2>\n<p>我们现在准备测试我们构建的
+                                            API。让我们从命令行启动服务器。</p>\n<div class="codehilite">
+                                            <pre><span></span><span class="err">$</span> <span class="n">python</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">runserver</span>\n</pre>
+                                        </div>\n\n\n<p>我们现在可以从命令行使用 curl 等工具访问我们的 API ...</p>\n<div class="codehilite">
+                                            <pre><span></span><span class="p">(</span><span class="n">venv</span><span class="p">)</span> <span class="n">fang</span><span class="nd">@ubuntu</span><span class="p">:</span><span class="o">~/</span><span class="n">tutorial</span><span class="err">$</span> <span class="n">curl</span> <span class="o">-</span><span class="n">H</span> <span class="s1">&#39;Accept: application/json; indent=4&#39;</span> <span class="o">-</span><span class="n">u</span> <span class="n">admin</span><span class="p">:</span><span class="n">password123</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">8000</span><span class="o">/</span><span class="n">users</span><span class="o">/</span>\n<span class="p">[</span>\n    <span class="p">{</span>\n        <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;http://127.0.0.1:8000/users/2/&quot;</span><span class="p">,</span>\n        <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;tom&quot;</span><span class="p">,</span>\n        <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;atom@example.com&quot;</span><span class="p">,</span>\n        <span class="s2">&quot;groups&quot;</span><span class="p">:</span> <span class="p">[]</span>\n    <span class="p">},</span>\n    <span class="p">{</span>\n        <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;http://127.0.0.1:8000/users/1/&quot;</span><span class="p">,</span>\n        <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span><span class="p">,</span>\n        <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;admin@example.com&quot;</span><span class="p">,</span>\n        <span class="s2">&quot;groups&quot;</span><span class="p">:</span> <span class="p">[]</span>\n    <span class="p">}</span>\n</pre>
+                                        </div>\n\n\n<p>或者命令行工具 <code>httpie</code> ...</p>\n<div class="codehilite">
+                                            <pre><span></span><span class="p">(</span><span class="n">venv</span><span class="p">)</span> <span class="n">fang</span><span class="nd">@ubuntu</span><span class="p">:</span><span class="o">~/</span><span class="n">tutorial</span><span class="err">$</span> <span class="n">http</span> <span class="o">-</span><span class="n">a</span> <span class="n">admin</span><span class="p">:</span><span class="n">password123</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">8000</span><span class="o">/</span><span class="n">users</span><span class="o">/</span>\n<span class="n">HTTP</span><span class="o">/</span><span class="mf">1.1</span> <span class="mi">200</span> <span class="n">OK</span>\n<span class="n">Allow</span><span class="p">:</span> <span class="n">GET</span><span class="p">,</span> <span class="n">POST</span><span class="p">,</span> <span class="n">HEAD</span><span class="p">,</span> <span class="n">OPTIONS</span>\n<span class="n">Content</span><span class="o">-</span><span class="n">Length</span><span class="p">:</span> <span class="mi">198</span>\n<span class="n">Content</span><span class="o">-</span><span class="n">Type</span><span class="p">:</span> <span class="n">application</span><span class="o">/</span><span class="n">json</span>\n<span class="n">Date</span><span class="p">:</span> <span class="n">Mon</span><span class="p">,</span> <span class="mi">25</span> <span class="n">Jun</span> <span class="mi">2018</span> <span class="mi">14</span><span class="p">:</span><span class="mi">22</span><span class="p">:</span><span class="mi">19</span> <span class="n">GMT</span>\n<span class="n">Server</span><span class="p">:</span> <span class="n">WSGIServer</span><span class="o">/</span><span class="mf">0.2</span> <span class="n">CPython</span><span class="o">/</span><span class="mf">3.5</span><span class="o">.</span><span class="mi">2</span>\n<span class="n">Vary</span><span class="p">:</span> <span class="n">Accept</span><span class="p">,</span> <span class="n">Cookie</span>\n<span class="n">X</span><span class="o">-</span><span class="n">Frame</span><span class="o">-</span><span class="n">Options</span><span class="p">:</span> <span class="n">SAMEORIGIN</span>\n\n<span class="p">[</span>\n    <span class="p">{</span>\n        <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;atom@example.com&quot;</span><span class="p">,</span>\n        <span class="s2">&quot;groups&quot;</span><span class="p">:</span> <span class="p">[],</span>\n        <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;http://127.0.0.1:8000/users/2/&quot;</span><span class="p">,</span>\n        <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;tom&quot;</span>\n    <span class="p">},</span>\n    <span class="p">{</span>\n        <span class="s2">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;admin@example.com&quot;</span><span class="p">,</span>\n        <span class="s2">&quot;groups&quot;</span><span class="p">:</span> <span class="p">[],</span>\n        <span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;http://127.0.0.1:8000/users/1/&quot;</span><span class="p">,</span>\n        <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;admin&quot;</span>\n    <span class="p">}</span>\n<span class="p">]</span>\n</pre>
+                                        </div>\n\n\n<p>或者直接通过浏览器访问 URL <code>http://127.0.0.1:8000/users/</code> ...</p>
+                                        \n<p><img alt="" src="/static/images/drf/quickstart.png" /></p>\n<p>
+                                            如果你正在使用浏览器访问，请确保从右上角的进行登录。</p>\n<p>太棒了，那很容易！</p>\n<p>如果您想更深入地了解 REST
+                                            framework 是如何通过<a
+                                                href="http://www.iamnancy.top/post/167/">本教程</a>组合在一起的，或者开始浏览 <a
+                                                href="http://www.django-rest-framework.org/#api-guide">API 指南</a>。</p>
+                                    </p>
+                                </div>\n </div>\n </div>\n\n <div class="popularize">\n <img
+                                src="/static/images/drf/share1.jpg" class="share" id="share_left" alt="" \n
+                                title="海量优惠券，天猫淘宝、京东、拼多多、饿了吗等">\n <img src="/static/images/drf/share2.jpg" class="share"
+                                id="share_right" alt="" \n title="海量优惠券，天猫淘宝、京东、拼多多、饿了吗等">\n </div>\n </div>\n <span
+                        id="return_top" title="返回顶部"></span>\n\n <div class="jzend"></div>\n </div>\n \n <footer>\n <div
+                        class="footer">\n <div class="f_l" style="float:none;text-align:center;margin: auto;">\n <p>
+                                Copyright © 2017~2020 Nancy All Rights Reserved | <a class="iconfont icon-youxiang" \n
+                                    style="color: #c69a37" \n href="http://email.163.com/" \n target="_blank"><span>
+                                        fangweire@163.com</span></a>\n </p>\n <p>浙ICP备17032973号</p>\n </div>\n\n <div
+                            style="width: 300px;height: 24px;margin: 0 auto;text-align: center;">\n <a target="_blank"
+                                href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010602010642" \n
+                                style="display:inline-block;text-decoration:none;height:24px;line-height:24px;">\n <img
+                                    src="/static/images/beian.png" style="float:left;" alt="" />\n <p
+                                    style="float:left;height:24px;line-height:24px;margin: 0 0 0 5px;">浙公网安备
+                                    33010602010642号</p>\n </a>\n </div>\n \n \n \n </div>\n </footer>\n \n </div>\n
+        </div>\n</div>\n</body>\n
+
+</html>\n'

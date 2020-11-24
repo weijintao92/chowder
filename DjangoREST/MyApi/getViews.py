@@ -10,18 +10,7 @@ from MyApi.myfunction import videoapi,itellyou_function
 
 my_key = "wjt123"
 
-@api_view(['GET'])
-def reptile_itellyou_base(request, pk):
-    """ 
-    我告诉你 网页基础分析
-    """
-    if pk != my_key:
-        return HttpResponse(status=401)
-    if request.method == 'GET':
-        if itellyou_function.reptile_itellyou_base():
-            return Response(data='成功！',status=200)
-        else:
-            return Response(status=404)
+
 
         
 @api_view(['GET'])
@@ -40,6 +29,15 @@ def GetVideoUrls(request):
 
 @api_view(['GET'])
 def get_itellyou_base(request):
+    """
+    获取基础基础数据
+    """
+    if request.method == 'GET':  
+        serializer = itellyouSerializer(itellyou.objects.all(), many=True)
+        return JsonResponse(serializer.data, safe=False)
+
+@api_view(['POST'])
+def get_itellyou_detail(request):
     """
     获取基础基础数据
     """

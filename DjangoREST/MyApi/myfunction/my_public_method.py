@@ -46,14 +46,15 @@ def get_url(my_url):
     if r.status_code==200:
         return r.text
 
-def itellyou_post(father_key,url):
+def itellyou_post(list_request_data,my_url):
     """
     我告诉你 pos方法获取目录
     """
     ua = UserAgent()  # 爬虫请求头伪装
     
-    payload = {'id': father_key}
-    m = MultipartEncoder(payload)
+    # 组装参数
+    
+    m = MultipartEncoder(list_request_data)
     # 定制请求头
     my_headers = {
         # ':authority': 'msdn.itellyou.cn',
@@ -72,11 +73,8 @@ def itellyou_post(father_key,url):
         'User-Agent': ua.chrome,
     }
     
-    r = requests.post(url='https://msdn.itellyou.cn/Index/GetCategory',data=m  ,headers=my_headers)
+    r = requests.post(url=my_url,data=m  ,headers=my_headers)
     # r.encoding = r.apparent_encoding
     if r.status_code==200:
         return r.text
-        list_temp = json.loads(r.text)
-        for item in list_temp:
-            #将数据保存到数据库
-            itellyou_detali(father_key=father_key,key=item['id'],name=item['name']).save()
+        

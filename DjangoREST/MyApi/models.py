@@ -37,6 +37,27 @@ class itellyou_detali(models.Model):
     class Meta:
         ordering = ('father_key',)
 
+#  我告诉你语言版本
+class itellyou_lang_edition (models.Model):
+    father_key= models.CharField(max_length=100, blank=True, default='')
+    key = models.CharField(max_length=100, blank=True, default='')
+    lang = models.CharField(max_length=100, blank=True, default='')
+    class Meta:
+        ordering = ('father_key',)
+
+# 我告诉你最终软件版本信息
+class itellyou_software_message (models.Model):
+    father_key= models.CharField(max_length=100, blank=True, default='')
+    key = models.CharField(max_length=100, blank=True, default='')
+    name = models.CharField(max_length=100, blank=True, default='')
+    edition_date =models.DateTimeField()
+    download_url = models.CharField(max_length=100, blank=True, default='')
+    class Meta:
+        ordering = ('father_key',)
+
+
+    
+
 
 
 

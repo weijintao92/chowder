@@ -28,6 +28,11 @@ def reptile_itellyou_base(request, pk):
 def reptile_itellyou_detail(request, pk):
     """ 
     我告诉你 目录明细获取
+
+    https://msdn.itellyou.cn/Index/GetCategory
+    Request Method: POST
+    formdata
+    id: AFF8A80F-2DEE-4BBA-80EC-611AC56D3849
     """
     #
     if pk != my_key:
@@ -38,29 +43,38 @@ def reptile_itellyou_detail(request, pk):
         else:
             return Response(status=404)
         
-@api_view(['GET'])
-def GetVideoUrls(request):
-    """
-    获取视频解析接口地址
-    """
-    if request.method == 'GET':
-        # snippets = Snippet.objects.all()
-        list_url = videoapi.get_url_list()
-        # data = JSONParser().parse(list_url)
-        # serializer = SnippetSerializer(snippets, many=True)
-        # class Response(data=None, status=None, template_name=None, headers=None, exception=False, content_type=None)
-        # return JsonResponse(serializer.data, safe=False)
-        return Response(data=list_url)
 
-@api_view(['GET'])
-def get_itellyou_base(request):
-    """
-    获取基础基础数据
-    """
-    if request.method == 'GET':  
-        serializer = itellyouSerializer(itellyou.objects.all(), many=True)
-        return JsonResponse(serializer.data, safe=False)
+@api_view(['POST'])
+def reptile_itellyou_finaldata(request, pk):
+    """ 
+    获取：我告诉你 最终数据；
 
+    获取当前语言版本；
+    获取软件具体信息
+    https://msdn.itellyou.cn/Index/GetLang
+    Request Method: POST
+    formdata
+    id: d15691d5-9208-4a7b-b8f8-b64cf6fb875a
+
+
+    #根据名称和语言版本获取具体的软件信息
+    https://msdn.itellyou.cn/Index/GetList
+    Request Method: POST
+    formdata
+    id: d15691d5-9208-4a7b-b8f8-b64cf6fb875a
+    lang: e15db4de-c094-4c50-822a-98ad50daba4f
+    filter: true
+
+
+    """
+    #
+    if pk != my_key:
+        return HttpResponse(status=401)
+    if request.method == 'POST':
+        if itellyou_function.reptile_itellyou_finaldata():
+            return Response(data='成功！',status=200)
+        else:
+            return Response(status=404)
 # @csrf_exempt
 # def snippet_detail(request, pk):
 #     """

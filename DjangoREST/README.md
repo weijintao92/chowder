@@ -11,7 +11,7 @@ python manage.py migrate  # 创建表结构
 
 rm -f db.sqlite3
 rm -r snippets/migrations
-python manage.py makemigrations snippets
+python manage.py makemigrations MyApi
 python manage.py migrate
 
 # DjangoREST

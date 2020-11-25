@@ -2,8 +2,8 @@ from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
-from MyApi.models import itellyou 
-from MyApi.serializers import itellyouSerializer
+from MyApi.models import itellyou,itellyou_detali,itellyou_lang_edition,itellyou_software_message
+from MyApi.serializers import itellyouSerializer,itellyou_detaliSerializer,itellyou_lang_editionSerializer,itellyou_software_messageSerializer
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from MyApi.myfunction import videoapi,itellyou_function
@@ -30,7 +30,7 @@ def GetVideoUrls(request):
 @api_view(['GET'])
 def get_itellyou_base(request):
     """
-    获取基础基础数据
+    获取“我告诉你”基础数据
     """
     if request.method == 'GET':  
         serializer = itellyouSerializer(itellyou.objects.all(), many=True)
@@ -39,11 +39,47 @@ def get_itellyou_base(request):
 @api_view(['POST'])
 def get_itellyou_detail(request):
     """
-    获取基础基础数据
+    获取“我告诉你“目录明细
+
+    传递的参数是
+    itellyou 的key
     """
-    if request.method == 'GET':  
-        serializer = itellyouSerializer(itellyou.objects.all(), many=True)
-        return JsonResponse(serializer.data, safe=False)
+    fk = request.POST.get("fk")
+    if fk is None:
+        return Response(data="获取传递参数失败！",status=404)
+    if request.method == 'POST':  
+        serializer = itellyou_detaliSerializer(itellyou_detali.objects.filter(father_key=fk), many=True)
+        return Response(data=serializer.data)
+
+@api_view(['POST'])
+def get_itellyou_lang_edition(request):
+    """
+    获取“我告诉你“软件语言版本信息
+
+    传递的参数是
+    itellyou_detali 的key
+    """
+    fk = request.POST.get("fk")
+    if fk is None:
+        return Response(data="获取传递参数失败！",status=404)
+    if request.method == 'POST':  
+        serializer = itellyou_lang_editionSerializer(itellyou_lang_edition.objects.filter(father_key=fk), many=True)
+        return Response(data=serializer.data)
+
+@api_view(['POST'])
+def get_itellyou_software_message(request):
+    """
+    获取“我告诉你“软件语言版本信息
+
+    传递的参数是
+    itellyou_lang_edition 的key
+    """
+    fk = request.POST.get("fk")
+    if fk is None:
+        return Response(data="获取传递参数失败！",status=404)
+    if request.method == 'POST':  
+        serializer = itellyou_software_messageSerializer(itellyou_software_message.objects.filter(father_key=fk), many=True)
+        return Response(data=serializer.data)
 
 # @csrf_exempt
 # def snippet_detail(request, pk):

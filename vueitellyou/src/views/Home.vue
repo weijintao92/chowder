@@ -16,11 +16,6 @@
           <span class="el-dropdown-link">
             联系我<i class="el-icon-arrow-down el-icon--right"></i>
           </span>
-          <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item>黄金糕</el-dropdown-item>
-            <el-dropdown-item>狮子头</el-dropdown-item>
-            <el-dropdown-item>螺蛳粉</el-dropdown-item>
-          </el-dropdown-menu>
         </el-dropdown>
       </div>
     </el-header>
@@ -29,13 +24,9 @@
         <el-row class="tac">
           <el-col :span="24">
             <el-menu
-              default-active="2"
-              class="el-menu-vertical-demo"
               @open="handleOpen"
               @close="handleClose"
-              background-color="#545c64"
               text-color="#fff"
-              active-text-color="#ffd04b"
               :unique-opened="true"
             >
               <el-submenu
@@ -44,10 +35,22 @@
                 :index="item.key"
               >
                 <template slot="title">
-                  <i class="el-icon-menu"></i>
+                  <!-- <i class="el-icon-menu"></i> -->
                   <span>{{ item.name }}</span>
                 </template>
-                <el-menu-item index="1-1">选项1</el-menu-item>
+
+
+
+                <!-- 目录明细 -->
+                <div class="div_list_itellyou_detail">
+                  <el-menu-item
+                    v-for="(item, index) in list_itellyou_detail"
+                    :index="index"
+                    :key="item.id"
+                    @click="itellyou_final(item.key)"
+                    >{{ item.name }}</el-menu-item
+                  >
+                </div>
               </el-submenu>
             </el-menu>
           </el-col>
@@ -63,7 +66,7 @@
 <script>
 // import axios from "axios";
 // import Axios from "axios";
-import qs from 'qs';
+import qs from "qs";
 
 export default {
   name: "Home",
@@ -76,6 +79,7 @@ export default {
         { name: "最新更新", url: "", my_icon: "" },
       ],
       aside_main: [],
+      list_itellyou_detail: [],
     };
   },
   created: function () {
@@ -100,17 +104,16 @@ export default {
           // always executed
         });
     },
-
+    // 打开
     handleOpen(key, keyPath) {
       console.log(key, keyPath);
-
-    
       this.$axios
-        .post("/get_itellyou_detail /", qs.stringify({"fk":key}) )
+        .post("/get_itellyou_detail/", qs.stringify({ fk: key }))
         .then((response) => {
           // handle success
           // console.log(response);
           console.log(response.data);
+          this.list_itellyou_detail = response.data;
           // console.log(this.my_option)
         })
         .catch(function (error) {
@@ -121,9 +124,15 @@ export default {
           // always executed
         });
     },
+    // 关闭
     handleClose(key, keyPath) {
       console.log(key, keyPath);
     },
+    //点击目录明细时触发
+    itellyou_final(key){
+      console.log(key)
+      
+    }
     // getabc(key, keyPath) {
     //   console.log(key, keyPath);
     // },
@@ -133,6 +142,35 @@ export default {
 
 
 <style>
+.el-submenu {
+  list-style: none;
+  margin: 2px;
+  padding-left: 0;
+  background-color: #3c85c4;
+}
+.div_list_itellyou_detail {
+  max-height: 579px;
+
+  border: 1px solid #3c85c4;
+  /* 设置滚动条 */
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  /* margin-bottom: 2px; */
+}
+.el-menu-item {
+  background-color: white !important;
+  color: black !important;
+  padding-left: 10px !important;
+  height: 25px!important;
+}
+
+.el-submenu .el-menu-item {
+    height: 50px;
+    line-height: 31px!important;
+    padding: 0 45px;
+    min-width: 200px;
+}
 .el-dropdown-link {
   cursor: pointer;
   color: #409eff;

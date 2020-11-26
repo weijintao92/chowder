@@ -20,7 +20,7 @@
       </div>
     </el-header>
     <el-container style="width: 80%">
-      <el-aside width="40%">
+      <el-aside width="240px">
         <el-row class="tac">
           <el-col :span="24">
             <el-menu
@@ -35,19 +35,18 @@
                 :index="item.key"
               >
                 <template slot="title">
-                  <!-- <i class="el-icon-menu"></i> -->
-                  <span>{{ item.name }}</span>
+                  <div class="div_my_link"><a>{{ item.name }}</a></div>
                 </template>
 
-
+                <i class="el-submenu__icon-arrow el-icon-arrow-down"></i>
 
                 <!-- 目录明细 -->
                 <div class="div_list_itellyou_detail">
                   <el-menu-item
-                    v-for="(item, index) in list_itellyou_detail"
-                    :index="index"
+                    v-for="item in list_itellyou_detail"
+                    :index="item.key"
                     :key="item.id"
-                    @click="itellyou_final(item.key)"
+                    :click="itellyou_final()"
                     >{{ item.name }}</el-menu-item
                   >
                 </div>
@@ -56,9 +55,9 @@
           </el-col>
         </el-row>
       </el-aside>
-      <el-container>
-        <el-main>Main</el-main>
-      </el-container>
+     
+        <el-main width="auto" ></el-main>
+  
     </el-container>
   </el-container>
 </template>
@@ -129,10 +128,9 @@ export default {
       console.log(key, keyPath);
     },
     //点击目录明细时触发
-    itellyou_final(key){
-      console.log(key)
-      
-    }
+    itellyou_final() {
+      // console.log(key);
+    },
     // getabc(key, keyPath) {
     //   console.log(key, keyPath);
     // },
@@ -142,14 +140,41 @@ export default {
 
 
 <style>
+/* A:link {text-decoration: underline; color: #0000ff}
+A:visited {text-decoration: underline; color: #800080}
+A:active {text-decoration: none} */
+A:hover {text-decoration: underline; }
+.div_my_link{
+  display: flex;
+
+}
+.el-link{
+  color:#fff !important;
+}
+/* .el-menu:hover{
+    background-color:yellow;
+} */
 .el-submenu {
   list-style: none;
   margin: 2px;
   padding-left: 0;
   background-color: #3c85c4;
 }
+.el-submenu__title:hover {
+  background-color: #3c85c4;
+}
+.el-submenu__title {
+  line-height: 0px !important;
+  height: 30px;
+  display: flex;
+  align-items: center;
+}
+
+/* .el-submenu:hover{
+  background-color:yellow;
+} */
 .div_list_itellyou_detail {
-  max-height: 579px;
+  max-height: 300px;
 
   border: 1px solid #3c85c4;
   /* 设置滚动条 */
@@ -162,14 +187,23 @@ export default {
   background-color: white !important;
   color: black !important;
   padding-left: 10px !important;
-  height: 25px!important;
+  height: 20px !important;
 }
-
-.el-submenu .el-menu-item {
-    height: 50px;
-    line-height: 31px!important;
-    padding: 0 45px;
-    min-width: 200px;
+.el-submenu__icon-arrow {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  margin-top: -7px;
+  transition: transform 0.3s;
+  font-size: 12px;
+  /* backface-visibility: hidden; */
+  visibility: hidden;
+}
+.el-menu-item {
+  height: 50px;
+  line-height: 18px !important;
+  padding: 0 45px;
+  min-width: 200px;
 }
 .el-dropdown-link {
   cursor: pointer;

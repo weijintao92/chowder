@@ -69,25 +69,25 @@
             :key="item.key"
             :name="item.key"
           >
-            <div
-              class="checkbox"
-              v-for="item in list_itellyou_software"
-              :key="item.key"
-            >
-              <el-checkbox>
-                {{ item.name }}
-                <!-- <el-button type="primary" size="mini">主要按钮</el-button> -->
-                <span
-                  class="label label-primary getFileDetail"
-                  data-loaded="false"
-                  data-id="3fbb85c2-6445-496f-af4d-31fab85755a0"
-                  >详细信息
-                </span>
-              </el-checkbox>
-              <div style="width:500px;height:500px; background-color: #3c85c4;">
-                nihao
-              </div>
-            </div>
+            <el-collapse accordion>
+              <el-collapse-item
+                v-for="item in list_itellyou_software"
+                :key="item.key"
+              >
+                <template slot="title">
+                  {{ item.name }}
+                  <!-- <span class="label label-primary getFileDetail"
+                    >详细信息
+                  </span> -->
+                </template>
+                <el-card class="box-card">
+                  <el-row>
+                    <el-col span="8">文件名 </el-col>
+                    <el-col span="8">{{ item.download_url }} </el-col>
+                  </el-row>
+                </el-card>
+              </el-collapse-item>
+            </el-collapse>
           </el-tab-pane>
         </el-tabs>
       </el-main>
@@ -206,6 +206,8 @@ export default {
 </script>
 
 <style>
+.getFileDetail:focus {
+}
 .checkbox {
   display: block;
   min-height: 20px;

@@ -12,8 +12,8 @@ from django.urls import path, include
 
 urlpatterns = [
     url(r'^', include('MyApi.urls')),
-    path('docs/', include_docs_urls(title='我的测试平台接口文档')), 
+    # path('docs/', include_docs_urls(title='我的测试平台接口文档')), 
     path('', include_docs_urls(title='我的测试平台接口文档')), 
-    url(r'^admin/$', admin.site.urls),
+    url(r'^admin/', admin.site.urls),
     # path(r'docs/', schema_view),
 ]

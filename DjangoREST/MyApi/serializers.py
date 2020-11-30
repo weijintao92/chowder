@@ -23,4 +23,4 @@ class itellyou_lang_editionSerializer(serializers.ModelSerializer):
 class itellyou_software_messageSerializer(serializers.ModelSerializer):
     class Meta:
         model = itellyou_software_message
-        fields = ('id', 'father_key','key', 'name','edition_date','download_url')
+        fields = ('id', 'father_key','lang_key','key', 'name','edition_date','download_url')

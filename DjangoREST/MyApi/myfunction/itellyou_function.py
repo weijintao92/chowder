@@ -73,7 +73,7 @@ def reptile_itellyou_detail():
                                 key=item['id'], name=item['name']).save()
             print(var.key)
             # 随机暂停1-9秒钟，避免被反爬虫
-            time.sleep(random.randint(1,9))     
+            # time.sleep(random.randint(1,9))     
     return True
 
 def reptile_itellyou_finaldata():
@@ -120,10 +120,10 @@ def reptile_itellyou_finaldata():
                 list_software_data = json.loads(r_software_text)
                 for software_data in list_software_data["result"]:
                     # 保存数据itellyou_software_message
-                    itellyou_software_message(father_key=item['id'],key=software_data['id'],name=software_data['name'],edition_date=software_data['post'],download_url=software_data['url']).save()
+                    itellyou_software_message(father_key=var.key,lang_key=item['id'],key=software_data['id'],name=software_data['name'],edition_date=software_data['post'],download_url=software_data['url']).save()
             print(var.key)
             # 随机暂停1-9秒钟，避免被反爬虫
-            time.sleep(random.randint(1,9))     
+            # time.sleep(random.randint(1,9))     
     return True
 
 

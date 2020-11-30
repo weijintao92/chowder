@@ -75,10 +75,11 @@ def get_itellyou_software_message(request):
     itellyou_lang_edition 的key
     """
     fk = request.POST.get("fk")
+    lk = request.POST.get("lk")
     if fk is None:
         return Response(data="获取传递参数失败！",status=404)
     if request.method == 'POST':  
-        serializer = itellyou_software_messageSerializer(itellyou_software_message.objects.filter(father_key=fk), many=True)
+        serializer = itellyou_software_messageSerializer(itellyou_software_message.objects.filter(father_key=fk,lang_key=lk), many=True)
         return Response(data=serializer.data)
 
 # @csrf_exempt

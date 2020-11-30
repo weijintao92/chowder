@@ -44,7 +44,7 @@
                     v-for="(item, index) in list_itellyou_detail"
                     :key="index"
                     :index="item.key"
-                    @click="itellyou_final(item.key)"
+                    @click="itellyou_lang(item.key)"
                   >
                     <!-- v-bind:style="{'background-color':my_background_color} -->
                     <div class="div_item">{{ item.name }}</div>
@@ -57,124 +57,39 @@
       </el-aside>
 
       <el-main width="auto">
-        <div>
-          <el-input
-            size="small"
-            placeholder="搜索关键字，空格分词 走起"
-            v-model="input2"
+        <el-tabs
+          @tab-click="itellyou_software"
+          type="border-card"
+          tab-position="left"
+          style="height: auto;"
+        >
+          <el-tab-pane
+            v-for="item in list_itellyou_language"
+            :label="item.lang"
+            :key="item.key"
+            :name="item.key"
           >
-            <template size="small" slot="append">Go!</template>
-          </el-input>
-        </div>
-
-        <div>
-          <div class="col-md-9" role="main">
-            <form id="search_form" style="margin-bottom: 8px; margin-top: 2px">
-              <div class="input-group">
-                <input
-                  class="form-control"
-                  name="keyword"
-                  placeholder="搜索关键字，空格分词 走起"
-                /><span class="input-group-btn"
-                  ><button class="btn btn-default">Go!</button></span
-                >
-              </div>
-            </form>
-            <div class="bs-docs-section">
-              <div class="row">
-                <div class="col-md-12">
-                  <div
-                    class="tabbable tabs-left"
-                    id="view_data_container"
-                    style="max-height: 849px; overflow: auto"
-                  >
-                    <ul class="nav nav-tabs">
-                      <li class="active">
-                        <a
-                          href="#lang_041dbbd2-c198-4523-b438-590128265d82"
-                          data-loadproduct="true"
-                          data-loaded="true"
-                          data-id="041dbbd2-c198-4523-b438-590128265d82"
-                          data-toggle="tab"
-                          data-loading="false"
-                          >中文 - 简体</a
-                        >
-                      </li>
-                      <li>
-                        <a
-                          href="#lang_e15db4de-c094-4c50-822a-98ad50daba4f"
-                          data-loadproduct="true"
-                          data-loaded="false"
-                          data-id="e15db4de-c094-4c50-822a-98ad50daba4f"
-                          data-toggle="tab"
-                          >英语</a
-                        >
-                      </li>
-                      <li>
-                        <a href="#select_data_box" data-toggle="tab"
-                          >已勾选(<span>0</span>)</a
-                        >
-                      </li>
-                    </ul>
-                    <div class="tab-content">
-                      <div
-                        class="tab-pane active"
-                        id="lang_041dbbd2-c198-4523-b438-590128265d82"
-                      >
-                        <ul class="list-unstyled">
-                          <li>
-                            <div class="checkbox">
-                              <label
-                                ><input
-                                  type="checkbox"
-                                  data-url="ed2k://|file|cn_disc_1_windows_small_business_server_2008_standard_and_premium_installation_x64_dvd_x14-76588.iso|3926978560|91A07264117D4E4C24EF4A209E496FD2|/"
-                                  value="bb8af02d-c34a-4207-99a2-3200711fd0cc"
-                                />Disc 1: Windows Small Business Server 2008
-                                Standard and Premium Installation (x64) - DVD
-                                (Chinese - Simplified)</label
-                              >
-                              <span
-                                class="label label-primary getFileDetail"
-                                data-loaded="false"
-                                data-id="bb8af02d-c34a-4207-99a2-3200711fd0cc"
-                                >详细信息</span
-                              >
-                            </div>
-                          </li>
-                          <li>
-                            <div class="checkbox">
-                              <label
-                                ><input
-                                  type="checkbox"
-                                  data-url="ed2k://|file|cn_disc_2_component_technologies_for_server_repair_x64_x14-76591.iso|2184601600|6A9DF8733401F16DB2B95C02CE5BD8C2|/"
-                                  value="6257421e-2605-4734-a86b-f5ae6110c0e0"
-                                />Disc 2: Component Technologies for Server
-                                Repair (x64) - DVD (Chinese-Simplified)</label
-                              >
-                              <span
-                                class="label label-primary getFileDetail"
-                                data-loaded="false"
-                                data-id="6257421e-2605-4734-a86b-f5ae6110c0e0"
-                                >详细信息</span
-                              >
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                      <div
-                        class="tab-pane"
-                        id="lang_e15db4de-c094-4c50-822a-98ad50daba4f"
-                      ></div>
-                      <div class="tab-pane" id="select_data_box">
-                        <pre>声明：本站资源均来自于官方原版，ed2k可视为P2P下载链接。由于网络环境和下载工具的不确定性，本站不保证所有人都可以下载成功，如果失败可以更换网络或者下载工具重复尝试。下载完成后务必进行SHA1校验（推荐使用<a href="https://share.weiyun.com/5gtDK6E" target="_blank">iHasher</a>），与网站核对一致后再使用。所有操作系统默认均为试用版，如有正版密钥可以有效激活，本站不提供任何激活和相关服务。请在下载完成后再考虑自愿为本站打赏或捐助，下载速度与捐助无关。如需退款请发邮件至：m@itellyou.cn，退款没有有效期，只需要提供付款截图和收款二维码即可（不是二维码名片）。<br><br><strong style="font-size:16px;">Windows 10 2004 已在<a href="https://next.itellyou.cn/Original/Index" target="_blank">next.itellyou.cn</a>更新。可使用第三方帐号可以直接登录，免注册。</strong></pre>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+            <div
+              class="checkbox"
+              v-for="item in list_itellyou_software"
+              :key="item.key"
+            >
+              <el-checkbox>
+                {{ item.name }}
+                <!-- <el-button type="primary" size="mini">主要按钮</el-button> -->
+                <span
+                  class="label label-primary getFileDetail"
+                  data-loaded="false"
+                  data-id="3fbb85c2-6445-496f-af4d-31fab85755a0"
+                  >详细信息
+                </span>
+              </el-checkbox>
+              <div style="width:500px;height:500px; background-color: #3c85c4;">
+                nihao
               </div>
             </div>
-          </div>
-        </div>
+          </el-tab-pane>
+        </el-tabs>
       </el-main>
     </el-container>
   </el-container>
@@ -193,31 +108,34 @@ export default {
       head_buttons: [
         { name: "站长备用", url: "", my_icon: "" },
         { name: "十年相伴", url: "", my_icon: "" },
-        { name: "最新更新", url: "", my_icon: "" },
+        { name: "最新更新", url: "", my_icon: "" }
       ],
       aside_main: [],
       list_itellyou_detail: [],
+      list_itellyou_language: [],
+      list_itellyou_software: [],
+      father_key: ""
     };
   },
-  created: function () {
-    //窗体加载时执行
+  created: function() {
+    // 窗体加载时执行
     this.my_window_load();
   },
   methods: {
     my_window_load() {
       this.$axios
         .get("/get_itellyou_base/")
-        .then((response) => {
+        .then(response => {
           // handle success
           // console.log(response);
           this.aside_main = response.data;
           // console.log(this.my_option)
         })
-        .catch(function (error) {
+        .catch(function(error) {
           // handle error
           console.log(error);
         })
-        .then(function () {
+        .then(function() {
           // always executed
         });
     },
@@ -226,18 +144,18 @@ export default {
       // console.log(key);
       this.$axios
         .post("/get_itellyou_detail/", qs.stringify({ fk: key }))
-        .then((response) => {
+        .then(response => {
           // handle success
           // console.log(response);
           // console.log(response.data);
           this.list_itellyou_detail = response.data;
           // console.log(this.my_option)
         })
-        .catch(function (error) {
+        .catch(function(error) {
           // handle error
           console.log(error);
         })
-        .then(function () {
+        .then(function() {
           // always executed
         });
     },
@@ -245,79 +163,120 @@ export default {
     handleClose() {
       // console.log(key, keyPath);
     },
-    //点击目录明细时触发
-    itellyou_final(key) {
-      this.my_background_color = "#3c85c4";
-      //获取软件多语言版本信息
+    // 点击目录明细时触发,软件语言，软件基础信息
+    itellyou_lang(key) {
+      //保存主键key
+      this.father_key = key;
+      // 获取软件多语言版本信息
       // console.log(key);
       this.$axios
         .post("/get_itellyou_lang_edition/", qs.stringify({ fk: key }))
-        .then((response) => {
-          // handle success
-          console.log(response);
-          // console.log(response.data);
-          // this.list_itellyou_detail = response.data;
-          // console.log(this.my_option)
+        .then(response => {
+          //赋值
+          this.list_itellyou_language = response.data;
         })
-        .catch(function (error) {
-          // handle error
+        .catch(function(error) {
           console.log(error);
         })
-        .then(function () {
+        .then(function() {
           // always executed
         });
     },
-    // getabc(key, keyPath) {
-    //   console.log(key, keyPath);
-    // },
-  },
+    itellyou_software(tab) {
+      console.log(tab.name);
+      this.$axios
+        .post(
+          "/get_itellyou_software_message/",
+          qs.stringify({ fk: this.father_key, lk: tab.name })
+        )
+        .then(response => {
+          console.log(response.data);
+          //赋值
+          this.list_itellyou_software = response.data;
+        })
+        .catch(function(error) {
+          console.log(error);
+        })
+        .then(function() {
+          // always executed
+        });
+    }
+  }
 };
 </script>
 
-
 <style>
-.tabs-left>.nav-tabs {
-    top: auto;
-    margin-bottom: 0;
-    border-color: #c5d0dc;
-    float: left;
+.checkbox {
+  display: block;
+  min-height: 20px;
+  padding-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  /* vertical-align: middle; */
+}
+.label {
+  display: inline;
+  padding: 0.2em 0.6em 0.3em;
+  font-size: 75%;
+  font-weight: bold;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25em;
+}
+.label-primary {
+  background-color: #428bca;
+}
+.getFileDetail {
+  cursor: pointer;
+}
+.tabs-left > .nav-tabs {
+  top: auto;
+  margin-bottom: 0;
+  border-color: #c5d0dc;
+  float: left;
 }
 
 .nav-tabs {
-    border-color: #c5d0dc;
-    margin-bottom: 0;
-    margin-left: 0;
-    position: relative;
-    top: 1px;
+  border-color: #c5d0dc;
+  margin-bottom: 0;
+  margin-left: 0;
+  position: relative;
+  top: 1px;
 }
 .nav-tabs {
-    border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
 }
 .nav {
-    padding-left: 0;
-    margin-bottom: 0;
-    list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
 }
-ul, ol {
-    margin-top: 0;
-    margin-bottom: 10px;
+ul,
+ol {
+  margin-top: 0;
+  margin-bottom: 10px;
 }
-*, *:before, *:after {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 ul {
-    display: block;
-    list-style-type: disc;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    padding-inline-start: 40px;
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
 }
-A:hover {
+a:hover {
   text-decoration: underline;
 }
 /* .div_my_link {

@@ -48,6 +48,7 @@ class itellyou_lang_edition (models.Model):
 # 我告诉你最终软件版本信息
 class itellyou_software_message (models.Model):
     father_key= models.CharField(max_length=100, blank=True, default='')
+    lang_key= models.CharField(max_length=100, blank=True, default='')
     key = models.CharField(max_length=100, blank=True, default='')
     name = models.CharField(max_length=100, blank=True, default='')
     edition_date =models.DateTimeField()

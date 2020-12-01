@@ -1,7 +1,7 @@
 <template>
   <el-container>
     <el-header>
-      <div>
+      <div class="head_div_image">
         <el-image style="height: 44px; width: 136px" :src="url"></el-image>
       </div>
       <div class="my_div">
@@ -10,24 +10,17 @@
           v-for="(item, index) in head_buttons"
           :key="index"
         >
-          <el-button type="text">{{ item.name }}</el-button>
+          <el-button class="heade_button" type="text">{{
+            item.name
+          }}</el-button>
         </div>
-
-        <span class="el-dropdown-link">
-          联系我<i class="el-icon-arrow-down el-icon--right"></i>
-        </span>
       </div>
     </el-header>
     <el-container style="width: 80%">
       <el-aside width="240px">
         <el-row class="tac">
           <el-col :span="24">
-            <el-menu
-              @open="handleOpen"
-              @close="handleClose"
-              text-color="#fff"
-              :unique-opened="true"
-            >
+            <el-menu @open="handleOpen" text-color="#fff" :unique-opened="true">
               <el-submenu
                 v-for="(item, index) in aside_main"
                 :key="index"
@@ -56,12 +49,14 @@
       </el-aside>
 
       <el-main width="auto">
-        <el-col>
-          <el-input placeholder="搜索关键字，空格分词 走起" v-model="input2">
-            <template slot="append">Go!</template>
-          </el-input>
-        </el-col>
-        <el-ro>
+        <el-row>
+          <el-col style="margin-botton:20px">
+            <el-input placeholder="搜索关键字，空格分词 走起">
+              <template slot="append">Go!</template>
+            </el-input>
+          </el-col>
+        </el-row>
+        <el-row :style="{ visibility: is_software }">
           <el-tabs
             @tab-click="fun_itellyou_language"
             type="border-card"
@@ -77,7 +72,7 @@
               <el-collapse accordion>
                 <el-collapse-item
                   v-for="item in list_itellyou_software"
-                  :key="item.key"
+                  :key="item.id"
                 >
                   <template slot="title">
                     {{ item.name }}
@@ -87,22 +82,22 @@
                   </template>
                   <el-card class="box-card">
                     <el-row>
-                      <el-col :span="4">文件名 </el-col>
-                      <el-col :span="15">{{ item.name }} </el-col>
+                      <el-col :pull="1" :span="3"><b>文件名</b> </el-col>
+                      <el-col :span="15">{{ item.file_name }} </el-col>
                     </el-row>
                     <el-row>
-                      <el-col :span="4">SHA1 </el-col>
+                      <el-col :pull="1" :span="3"><b>SHA1 </b> </el-col>
                       <el-col :span="15">{{ item.my_sha1 }} </el-col>
                     </el-row>
                     <el-row>
-                      <el-col :span="4">文件大小 </el-col>
+                      <el-col :pull="1" :span="3"><b>文件大小 </b> </el-col>
                       <el-col :span="15">{{ item.file_size }} </el-col>
                     </el-row>
                     <el-row>
-                      <el-col :span="4">发布时间 </el-col>
+                      <el-col :pull="1" :span="3"><b>发布时间 </b> </el-col>
                       <el-col :span="15">{{ item.edition_date }} </el-col>
                     </el-row>
-                    <el-row>
+                    <el-row style="margin-top:20px">
                       <pre>{{ item.download_url }} </pre>
                     </el-row>
                     <el-row>
@@ -140,7 +135,7 @@
               </el-collapse>
             </el-tab-pane>
           </el-tabs>
-        </el-ro>
+        </el-row>
       </el-main>
     </el-container>
   </el-container>
@@ -158,19 +153,28 @@ export default {
       url: "https://msdn.itellyou.cn/images/itellyou.cn.png",
       head_buttons: [
         { name: "站长备用", url: "", my_icon: "" },
-        { name: "十年相伴", url: "", my_icon: "" },
-        { name: "最新更新", url: "", my_icon: "" }
+        { name: "联系我", url: "", my_icon: "" }
       ],
-      aside_main: [],
-      list_itellyou_detail: [],
-      list_itellyou_language: [],
-      list_itellyou_software: [],
+      aside_main: {},
+      list_itellyou_detail: { name: "" },
+      list_itellyou_language: { name: "" },
       father_key: "",
-      is_pic_show: false
+      is_pic_show: false,
+      list_itellyou_software: [],
+      is_software: "hidden"
+      //   file_name: "",
+      //   file_size: "",
+      //   my_sha1: "",
+      //   key: "",
+      //   name: "",
+      //   download_url: "",
+      //   edition_date: "",
+      //   id: ""
+      // }
     };
   },
+  // 窗体加载时执行
   created: function() {
-    // 窗体加载时执行
     this.my_window_load();
   },
   methods: {
@@ -179,10 +183,7 @@ export default {
       this.$axios
         .get("/get_itellyou_base/")
         .then(response => {
-          // handle success
-          // console.log(response);
           this.aside_main = response.data;
-          // console.log(this.my_option)
         })
         .catch(function(error) {
           // handle error
@@ -194,30 +195,23 @@ export default {
     },
     // 打开
     handleOpen(key) {
-      // console.log(key);
+      this.list_itellyou_detail = [];
+
       this.$axios
         .post("/get_itellyou_detail/", qs.stringify({ fk: key }))
         .then(response => {
-          // handle success
-          // console.log(response);
-          // console.log(response.data);
           this.list_itellyou_detail = response.data;
-          // console.log(this.my_option)
         })
         .catch(function(error) {
-          // handle error
           console.log(error);
         })
-        .then(function() {
-          // always executed
-        });
+        .then(function() {});
     },
-    // 关闭
-    handleClose() {
-      // console.log(key, keyPath);
-    },
+
     // 点击目录明细时触发,软件语言，软件基础信息
     itellyou_lang(key) {
+      this.is_software = "show";
+      this.list_itellyou_language = [];
       //保存主键key
       this.father_key = key;
       // 获取软件多语言版本信息
@@ -236,30 +230,26 @@ export default {
         });
     },
     fun_itellyou_language(tab) {
-      // console.log(tab.name);
+      this.list_itellyou_software = [];
       this.$axios
         .post(
           "/get_itellyou_software_message/",
           qs.stringify({ fk: this.father_key, lk: tab.name })
         )
         .then(response => {
-          // console.log(response.data);
           //赋值
-          // const list_software = response.data;
-
           response.data.forEach(element => {
             const download_url = element["download_url"];
             const list_ed2k = download_url.split("|");
-            console.log(list_ed2k);
-            // const begin_index = download_url.search("ed2k://|file|");
-            // const name = download_url.slice(13, end_index + 4);
             this.list_itellyou_software.push({
-              name: list_ed2k[2],
+              file_name: list_ed2k[2],
               file_size: list_ed2k[3],
               my_sha1: list_ed2k[4],
               key: element["key"],
+              name: element["name"],
               download_url: element["download_url"],
-              edition_date: element["edition_date"]
+              edition_date: element["edition_date"],
+              id: element["id"]
             });
           });
         })
@@ -275,6 +265,25 @@ export default {
 </script>
 
 <style>
+.head_div_image {
+  margin-left: 118px;
+}
+.heade_button {
+  color: #999999;
+}
+.heade_button:hover {
+  color: white;
+}
+.el-col-3 {
+  width: 16.66667%;
+  /* align-items: end; */
+  text-align: right;
+}
+/* .el-tabs--left,
+.el-tabs--right {
+  overflow: hidden;
+  margin-top: 45px;
+} */
 /* 可以设置不同的进入和离开动画 */
 /* 设置持续时间和动画函数 */
 .bounce-enter-active {
@@ -486,7 +495,7 @@ a:hover {
 }
 
 .el-aside {
-  background-color: #d3dce6;
+  /* background-color: #d3dce6; */
   color: #333;
 }
 
@@ -511,8 +520,5 @@ body > .el-container {
 
 .el-container:nth-child(7) .el-aside {
   line-height: 320px;
-}
-.el-button:hover {
-  color: red;
 }
 </style>

@@ -46,7 +46,6 @@
                     :index="item.key"
                     @click="itellyou_lang(item.key)"
                   >
-                    <!-- v-bind:style="{'background-color':my_background_color} -->
                     <div class="div_item">{{ item.name }}</div>
                   </el-menu-item>
                 </div>
@@ -57,39 +56,91 @@
       </el-aside>
 
       <el-main width="auto">
-        <el-tabs
-          @tab-click="itellyou_software"
-          type="border-card"
-          tab-position="left"
-          style="height: auto;"
-        >
-          <el-tab-pane
-            v-for="item in list_itellyou_language"
-            :label="item.lang"
-            :key="item.key"
-            :name="item.key"
+        <el-col>
+          <el-input placeholder="搜索关键字，空格分词 走起" v-model="input2">
+            <template slot="append">Go!</template>
+          </el-input>
+        </el-col>
+        <el-ro>
+          <el-tabs
+            @tab-click="fun_itellyou_language"
+            type="border-card"
+            tab-position="left"
+            style="height: auto;"
           >
-            <el-collapse accordion>
-              <el-collapse-item
-                v-for="item in list_itellyou_software"
-                :key="item.key"
-              >
-                <template slot="title">
-                  {{ item.name }}
-                  <!-- <span class="label label-primary getFileDetail"
-                    >详细信息
-                  </span> -->
-                </template>
-                <el-card class="box-card">
-                  <el-row>
-                    <el-col span="8">文件名 </el-col>
-                    <el-col span="8">{{ item.download_url }} </el-col>
-                  </el-row>
-                </el-card>
-              </el-collapse-item>
-            </el-collapse>
-          </el-tab-pane>
-        </el-tabs>
+            <el-tab-pane
+              v-for="item in list_itellyou_language"
+              :label="item.lang"
+              :key="item.key"
+              :name="item.key"
+            >
+              <el-collapse accordion>
+                <el-collapse-item
+                  v-for="item in list_itellyou_software"
+                  :key="item.key"
+                >
+                  <template slot="title">
+                    {{ item.name }}
+                    <span class="label label-primary getFileDetail"
+                      >详细信息
+                    </span>
+                  </template>
+                  <el-card class="box-card">
+                    <el-row>
+                      <el-col :span="4">文件名 </el-col>
+                      <el-col :span="15">{{ item.name }} </el-col>
+                    </el-row>
+                    <el-row>
+                      <el-col :span="4">SHA1 </el-col>
+                      <el-col :span="15">{{ item.my_sha1 }} </el-col>
+                    </el-row>
+                    <el-row>
+                      <el-col :span="4">文件大小 </el-col>
+                      <el-col :span="15">{{ item.file_size }} </el-col>
+                    </el-row>
+                    <el-row>
+                      <el-col :span="4">发布时间 </el-col>
+                      <el-col :span="15">{{ item.edition_date }} </el-col>
+                    </el-row>
+                    <el-row>
+                      <pre>{{ item.download_url }} </pre>
+                    </el-row>
+                    <el-row>
+                      <pre>声明：本站资源均来自于官方原版，ed2k可视为P2P下载链接。由于网络环境和下载工具的不确定性，本站不保证所有人都可以下载成功，如果失败可以更换网络或者下载工具重复尝试。下载完成后务必进行SHA1校验（推荐使用<a href="https://share.weiyun.com/5gtDK6E" target="_blank">iHasher</a>），与网站核对一致后再使用。所有操作系统默认均为试用版，如有正版密钥可以有效激活，本站不提供任何激活和相关服务。请在下载完成后再考虑自愿为本站打赏或捐助，下载速度与捐助无关。如需退款请发邮件至：m@itellyou.cn，退款没有有效期，只需要提供付款截图和收款二维码即可（不是二维码名片）。<br><br><strong style="font-size:16px;">Windows 10 2004 已在<a href="https://next.itellyou.cn/Original/Index" target="_blank">next.itellyou.cn</a>更新。可使用第三方帐号直接登录，免注册。</strong></pre>
+                    </el-row>
+                    <el-row>
+                      <div class="div_dashang">
+                        <div class="div_zfb">
+                          <transition name="bounce">
+                            <img
+                              width="129px"
+                              height="150px"
+                              v-show="is_pic_show"
+                              src="../../src/assets/my_zfb.jpg"
+                            />
+                          </transition>
+                        </div>
+                        <div class="div_zanshang">
+                          <img
+                            class="my_img"
+                            @click="
+                              is_pic_show
+                                ? (is_pic_show = false)
+                                : (is_pic_show = true)
+                            "
+                            width="62px"
+                            height="62px"
+                            src="https://msdn.itellyou.cn/images/shang.png"
+                          />
+                        </div>
+                      </div>
+                    </el-row>
+                  </el-card>
+                </el-collapse-item>
+              </el-collapse>
+            </el-tab-pane>
+          </el-tabs>
+        </el-ro>
       </el-main>
     </el-container>
   </el-container>
@@ -114,7 +165,8 @@ export default {
       list_itellyou_detail: [],
       list_itellyou_language: [],
       list_itellyou_software: [],
-      father_key: ""
+      father_key: "",
+      is_pic_show: false
     };
   },
   created: function() {
@@ -122,6 +174,7 @@ export default {
     this.my_window_load();
   },
   methods: {
+    // 页面加载
     my_window_load() {
       this.$axios
         .get("/get_itellyou_base/")
@@ -182,17 +235,33 @@ export default {
           // always executed
         });
     },
-    itellyou_software(tab) {
-      console.log(tab.name);
+    fun_itellyou_language(tab) {
+      // console.log(tab.name);
       this.$axios
         .post(
           "/get_itellyou_software_message/",
           qs.stringify({ fk: this.father_key, lk: tab.name })
         )
         .then(response => {
-          console.log(response.data);
+          // console.log(response.data);
           //赋值
-          this.list_itellyou_software = response.data;
+          // const list_software = response.data;
+
+          response.data.forEach(element => {
+            const download_url = element["download_url"];
+            const list_ed2k = download_url.split("|");
+            console.log(list_ed2k);
+            // const begin_index = download_url.search("ed2k://|file|");
+            // const name = download_url.slice(13, end_index + 4);
+            this.list_itellyou_software.push({
+              name: list_ed2k[2],
+              file_size: list_ed2k[3],
+              my_sha1: list_ed2k[4],
+              key: element["key"],
+              download_url: element["download_url"],
+              edition_date: element["edition_date"]
+            });
+          });
         })
         .catch(function(error) {
           console.log(error);
@@ -206,8 +275,63 @@ export default {
 </script>
 
 <style>
-.getFileDetail:focus {
+/* 可以设置不同的进入和离开动画 */
+/* 设置持续时间和动画函数 */
+.bounce-enter-active {
+  animation: bounce-in 0.5s;
 }
+.bounce-leave-active {
+  animation: bounce-in 0.5s reverse;
+}
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.my_img {
+  margin-left: -20px;
+}
+.div_zfb {
+  /* background-color: salmon; */
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  /* height: 100%; */
+  /* z-index: 999999; */
+}
+.div_zanshang {
+  width: 50%;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  /* background-color: rebeccapurple; */
+}
+.div_dashang {
+  display: flex;
+  width: 100%;
+}
+pre {
+  display: block;
+  padding: 9.5px;
+  margin: 0 0 10px;
+  font-size: 13px;
+  line-height: 1.428571429;
+  color: #333;
+  word-break: break-all;
+  word-wrap: break-word;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  white-space: pre-wrap;
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
 .checkbox {
   display: block;
   min-height: 20px;
@@ -351,7 +475,7 @@ a:hover {
   display: flex;
 }
 .el-header {
-  background-color: #b3c0d1;
+  background-color: #303030;
   color: #333;
   text-align: center;
   line-height: 60px;
@@ -369,13 +493,6 @@ a:hover {
 .el-container.is-vertical {
   flex-direction: column;
   align-items: center;
-}
-
-.el-main {
-  /* background-color: #e9eef3; */
-  /* color: #333; */
-  /* text-align: center; */
-  /* line-height: 160px; */
 }
 
 body > .el-container {

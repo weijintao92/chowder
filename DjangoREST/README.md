@@ -21,7 +21,9 @@ python3 -m venv ~/.virtualenvs/djangodev
 source ~/.virtualenvs/djangodev/bin/activate
 deactivate #退出虚拟环境
 
+
 python -m pip install Django 安装django
+pip install django-bootstrap4
 pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple uvloop
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple Django==3.1.3
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple djangorestframework
@@ -40,7 +42,7 @@ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple httptools
 
 pip install fake_useragent
 
-pip install requests_toolbelt
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple requests_toolbelt
 
 pip install coreapi
 

@@ -210,7 +210,6 @@ export default {
 
     // 点击目录明细时触发,软件语言，软件基础信息
     itellyou_lang(key) {
-      this.is_software = "show";
       this.list_itellyou_language = [];
       //保存主键key
       this.father_key = key;
@@ -219,6 +218,7 @@ export default {
       this.$axios
         .post("/get_itellyou_lang_edition/", qs.stringify({ fk: key }))
         .then(response => {
+          this.is_software = "visible";
           //赋值
           this.list_itellyou_language = response.data;
         })

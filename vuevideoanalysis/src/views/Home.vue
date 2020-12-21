@@ -90,7 +90,7 @@ export default {
     //窗体加载，基础的加载
     my_window_load() {
       axios
-        .get("http://api.gd97.xyz/GetVideoUrls/")
+        .get("127.0.0.1:8000/GetVideoUrls/")
         .then((response) => {
           // handle success
           // console.log(response);

@@ -43,11 +43,8 @@ INSTALLED_APPS = [
 ]
 
 REST_FRAMEWORK = {
-
     # 指定用于支持coreapi的Schema
     'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
-    # 'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.AutoSchema'
-
 }
 
 MIDDLEWARE = [

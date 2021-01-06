@@ -37,9 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
     'MyApi.apps.MyapiConfig',
-    # 'rest_framework_swagger',
+    'Vue.apps.VueConfig',
+    'rest_framework',
+    'rest_framework_swagger',
 ]
 
 REST_FRAMEWORK = {

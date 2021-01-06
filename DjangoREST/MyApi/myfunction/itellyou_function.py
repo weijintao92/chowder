@@ -8,26 +8,18 @@
 from MyApi.models import itellyou, itellyou_detali,itellyou_lang_edition,itellyou_software_message
 from MyApi.myfunction import my_public_method
 from bs4 import BeautifulSoup
-
-import requests
-
 import requests
 from bs4 import BeautifulSoup
-
 import json
 import time
-
 from fake_useragent import UserAgent  # 爬虫请求头伪装
 # 导入 random(随机数) 模块
 import random
-
 from requests_toolbelt import MultipartEncoder
-
 from urllib3.exceptions import InsecureRequestWarning
 from urllib3 import disable_warnings
 
 disable_warnings(InsecureRequestWarning)  # 禁止https(ssl)问题的警告
-
 
 def reptile_itellyou_base():
     """
@@ -48,7 +40,6 @@ def reptile_itellyou_base():
     except Exception as ex:
         print("itellyou-reptile_itellyou_base"+ex)
         return False
-
 
 def reptile_itellyou_detail():
     """
@@ -85,7 +76,6 @@ def reptile_itellyou_finaldata():
     Request Method: POST
     formdata
     id: d15691d5-9208-4a7b-b8f8-b64cf6fb875a
-
 
     #根据名称和语言版本获取具体的软件信息
     https://msdn.itellyou.cn/Index/GetList

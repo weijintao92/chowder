@@ -1,40 +1,28 @@
 # DjangoREST
 
 ```
-
 # 创建虚拟环境
 python3 -m venv ~/.virtualenvs/djangodev
-
 #进入虚拟环境
 source ~/.virtualenvs/djangodev/bin/activate
-
 #退出虚拟环境
 deactivate
 
-#最好先更新一下pip至最新版本
+# 最好先更新一下pip至最新版本
 python -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple  --upgrade pip
 
+# 安装
 pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple uvloop
-#安装django
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple Django==3.1.3
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple djangorestframework
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pygments # 用于代码高亮
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple requests
-
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple uwsgi
-
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple uvicorn
-
 python -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple  uvicorn gunicorn
-
-pip install -i https://pypi.tuna.tsinghua.edu.cn/simple uvloop
-
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple httptools
-
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple fake_useragent
-
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple requests_toolbelt
-
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple coreapi
 
 
@@ -73,7 +61,7 @@ python manage.py migrate
 python manage.py createsuperuser
 
 # 创建应用
-python manage.py startapp video #爬虫
+python manage.py startapp Vue #爬虫
 python manage.py startapp admm #控制台
 python manage.py startapp gd97 #视频解析
 
@@ -99,16 +87,12 @@ kill -9
 uvicorn DjangoREST.asgi:application --reload --port 5000
 
 ```
-
-
 # nginx
 ```
 nginx -s reload # 重新载入配置文件
 nginx -s reopen # 重启 Nginx
 nginx -s stop # 停止 Nginx
-
 netstat -lnpt #查看开放了哪些端口
-
 ```
 
 # 安装sqlite3
@@ -129,7 +113,6 @@ export LD_LIBRARY_PATH="/usr/local/lib"
 
 - 注意：在安装sqlite时请使用默认目录安装的方式，千万不要指定安装目录。不然python无法找到。
 - 参考:https://blog.csdn.net/ginynu/article/details/97172159
-
 
 - 查看sqlite3版本
 

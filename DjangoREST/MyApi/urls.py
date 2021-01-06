@@ -4,8 +4,6 @@ from MyApi import getViews
 
 urlpatterns = [
     url(r'^GetVideoUrls/$', getViews.GetVideoUrls),
-    # url(r'^snippets/(?P<pk>[0-9]+)/$', views.snippet_detail),
-    # url(r'', views.GetVideoUrls),
     url(r'^get_itellyou_base/$', getViews.get_itellyou_base),
     url(r'^get_itellyou_detail/$', getViews.get_itellyou_detail),
     url(r'^get_itellyou_lang_edition/$', getViews.get_itellyou_lang_edition),

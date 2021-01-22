@@ -25,7 +25,6 @@ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple fake_useragent
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple requests_toolbelt
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple coreapi
 
-
 # 验证django
 import django
 print(django.get_version())
@@ -84,7 +83,7 @@ netstat -lnpt
 # 结束进程
 kill -9
 
-uvicorn DjangoREST.asgi:application --reload --port 5000
+uvicorn DjangoREST.asgi:application --reload --port 8000
 
 ```
 # nginx

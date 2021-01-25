@@ -19,12 +19,7 @@ def GetVideoUrls(request):
     获取视频解析接口地址
     """
     if request.method == 'GET':
-        # snippets = Snippet.objects.all()
         list_url = videoapi.get_url_list()
-        # data = JSONParser().parse(list_url)
-        # serializer = SnippetSerializer(snippets, many=True)
-        # class Response(data=None, status=None, template_name=None, headers=None, exception=False, content_type=None)
-        # return JsonResponse(serializer.data, safe=False)
         return Response(data=list_url)
 
 @api_view(['GET'])

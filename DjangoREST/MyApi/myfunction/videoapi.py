@@ -7,19 +7,14 @@
 
 import requests
 from bs4 import BeautifulSoup
-
 import json
 import time
-
 from fake_useragent import UserAgent  # 爬虫请求头伪装
 # 导入 random(随机数) 模块
 import random
-
 from urllib3.exceptions import InsecureRequestWarning
 from urllib3 import disable_warnings
-
 disable_warnings(InsecureRequestWarning)  # 禁止https(ssl)问题的警告
-
 
 def get_url(my_url):
     """
@@ -322,6 +317,3 @@ def get_url_list():
 #     # get_video_api()
 #     # check_video_api()
 #     create_html()
-
-
-            

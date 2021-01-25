@@ -17,7 +17,6 @@ class MiddlewareMixin(object):
 class CORSMiddleware(MiddlewareMixin):
     def process_response(self,request,response):
         # 添加响应头
-
         # 允许你的域名来获取我的数据
         response['Access-Control-Allow-Origin'] = "*"
 

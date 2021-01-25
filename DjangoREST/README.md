@@ -11,19 +11,10 @@ deactivate
 # 最好先更新一下pip至最新版本
 python -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple  --upgrade pip
 
-# 安装
-pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple uvloop
-pip install -i https://pypi.tuna.tsinghua.edu.cn/simple Django==3.1.3
-pip install -i https://pypi.tuna.tsinghua.edu.cn/simple djangorestframework
-pip install -i https://pypi.tuna.tsinghua.edu.cn/simple pygments # 用于代码高亮
-pip install -i https://pypi.tuna.tsinghua.edu.cn/simple requests
-pip install -i https://pypi.tuna.tsinghua.edu.cn/simple uwsgi
-pip install -i https://pypi.tuna.tsinghua.edu.cn/simple uvicorn
-python -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple  uvicorn gunicorn
-pip install -i https://pypi.tuna.tsinghua.edu.cn/simple httptools
-pip install -i https://pypi.tuna.tsinghua.edu.cn/simple fake_useragent
-pip install -i https://pypi.tuna.tsinghua.edu.cn/simple requests_toolbelt
-pip install -i https://pypi.tuna.tsinghua.edu.cn/simple coreapi
+#导出 
+pip freeze > ./package.md
+#批量安装
+pip install -r package.md
 
 # 验证django
 import django
@@ -31,13 +22,14 @@ print(django.get_version())
 
 # 创建模型
 python manage.py startapp MyApi
-
-python manage.py makemigrations MyApi  # 让 Django 知道我们在我们的模型有一些变更
-
-python manage.py migrate  # 创建表结构
+# 让 Django 知道我们在我们的模型有一些变更
+python manage.py makemigrations MyApi 
+# 创建表结构
+python manage.py migrate  
 
 rm -f db.sqlite3
 rm -r snippets/migrations
+
 python manage.py makemigrations MyApi
 python manage.py migrate
 
@@ -74,6 +66,8 @@ python manage.py startapp gd97 #视频解析
 
 ```
 python -m pip install -i https://pypi.tuna.tsinghua.edu.cn/simple  uvicorn gunicorn
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple uvloop
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple httptools
 
 gunicorn DjangoREST.asgi:application -k uvicorn.workers.UvicornWorker 
 

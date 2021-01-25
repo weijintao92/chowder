@@ -6,10 +6,7 @@
       <h1>格调vip解析</h1>
       <h4> 免责声明：本站所有视频资源均来自网络。服务器仅展示第三方网站接口页面，并不存储任何视频资源。因此经由本站搜索所产生
         的任何结果皆不代表本站立场，本站不对其真实合法性以及版权负责，亦不承担任何法律责任。</h4>
-    
-        
-      </el-header
-    >
+      </el-header>
     <el-main>
       <el-row style="  margin-top: -12px;" >
         <el-col :span="4">
@@ -90,7 +87,7 @@ export default {
     //窗体加载，基础的加载
     my_window_load() {
       axios
-        .get("http://api.gd97.xyz/GetVideoUrls/")
+        .get("https://api.gd97.xyz/MyApiGetVideoUrls/")
         .then((response) => {
           // handle success
           // console.log(response);

@@ -5,7 +5,7 @@ import "element-ui/lib/theme-chalk/index.css";
 import router from "./router";
 import axios from "axios";
 
-axios.defaults.baseURL = "http://api.gd97.xyz/";
+axios.defaults.baseURL = "https://api.gd97.xyz/";
 axios.defaults.headers.post["Content-Type"] =
   "application/x-www-form-urlencoded";
 

@@ -181,7 +181,7 @@ export default {
     // 页面加载
     my_window_load() {
       this.$axios
-        .get("/get_itellyou_base/")
+        .get("/MyApiget_itellyou_base/")
         .then(response => {
           this.aside_main = response.data;
         })
@@ -198,7 +198,7 @@ export default {
       this.list_itellyou_detail = [];
 
       this.$axios
-        .post("/get_itellyou_detail/", qs.stringify({ fk: key }))
+        .post("/MyApiget_itellyou_detail/", qs.stringify({ fk: key }))
         .then(response => {
           this.list_itellyou_detail = response.data;
         })
@@ -216,7 +216,7 @@ export default {
       // 获取软件多语言版本信息
       // console.log(key);
       this.$axios
-        .post("/get_itellyou_lang_edition/", qs.stringify({ fk: key }))
+        .post("/MyApiget_itellyou_lang_edition/", qs.stringify({ fk: key }))
         .then(response => {
           this.is_software = "visible";
           //赋值
@@ -233,7 +233,7 @@ export default {
       this.list_itellyou_software = [];
       this.$axios
         .post(
-          "/get_itellyou_software_message/",
+          "/MyApiget_itellyou_software_message/",
           qs.stringify({ fk: this.father_key, lk: tab.name })
         )
         .then(response => {
